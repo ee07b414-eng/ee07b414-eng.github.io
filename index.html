@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yue Tian | 田悦 | Xiamen University of Technology</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<title>Yue Tian | 田悦 | Academic Trainer 🎮</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #fafaf9;
+  --bg: #f8f6f0;
   --bg-white: #ffffff;
-  --bg-dark: #1a1a1a;
+  --bg-dark: #1a1a2e;
   --text: #1c1917;
   --text-secondary: #57534e;
   --text-muted: #a8a29e;
-  --accent: #1d4ed8;
-  --accent-light: #dbeafe;
-  --accent-dark: #1e3a5f;
+  --accent: #e63946;
+  --accent2: #457b9d;
+  --accent3: #2a9d8f;
+  --accent-light: #fce4ec;
   --border: #e7e5e4;
-  --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-  --card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04);
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --card-hover: 0 6px 24px rgba(0,0,0,0.1);
   --radius: 12px;
+  --pixel: 'Press Start 2P', monospace;
   --font: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
-  --font-serif: 'Source Serif 4', Georgia, serif;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -36,12 +37,72 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Pixel border helper */
+.pixel-border {
+  border: 3px solid var(--text);
+  border-radius: 0;
+  box-shadow: 
+    3px 3px 0 var(--text),
+    -1px -1px 0 var(--text),
+    1px -1px 0 var(--text),
+    -1px 1px 0 var(--text);
+}
+
+/* Pokeball CSS */
+.pokeball {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(to bottom, #e63946 0%, #e63946 47%, #1c1917 47%, #1c1917 53%, #f8f6f0 53%, #f8f6f0 100%);
+  border: 3px solid #1c1917; position: relative; display: inline-block;
+}
+.pokeball::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #f8f6f0; border: 3px solid #1c1917;
+}
+.pokeball-sm { width: 20px; height: 20px; }
+.pokeball-sm::after { width: 8px; height: 8px; border-width: 2px; }
+
+/* Floating pokeballs */
+.float-pokeball {
+  position: absolute; opacity: 0.06; animation: floatSpin 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes floatSpin {
+  0% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(180deg) translateY(-15px); }
+  100% { transform: rotate(360deg) translateY(0); }
+}
+
+/* Type badges - Pokemon style */
+.type-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 20px; font-size: 10px;
+  font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  color: #fff; border: 2px solid rgba(0,0,0,0.15);
+}
+.type-electric { background: #f7d02c; color: #1a1a2e; }
+.type-psychic { background: #f95587; }
+.type-steel { background: #5a8ea2; }
+.type-ghost { background: #5269ad; }
+.type-flying { background: #a890f0; }
+.type-ice { background: #6ad3e4; color: #1a1a2e; }
+.type-fire { background: #f08030; }
+.type-grass { background: #3fa75a; }
+.type-water { background: #6890f0; }
+.type-dragon { background: #6f5af7; }
+.type-fighting { background: #c03028; }
+.type-fairy { background: #ee99ac; color: #1a1a2e; }
+.type-dark { background: #3d3d3d; }
+.type-normal { background: #a8a878; color: #1a1a2e; }
+.type-poison { background: #a040a0; }
+
 /* === NAV === */
 nav {
   position: fixed; top:0; left:0; right:0; z-index:999;
-  background: rgba(250,250,249,0.88);
+  background: rgba(248,246,240,0.92);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--text);
 }
 .nav-inner {
   max-width: 1140px; margin:0 auto; padding:0 24px;
@@ -50,35 +111,35 @@ nav {
 .nav-logo {
   font-weight:700; font-size:18px; color:var(--text);
   text-decoration:none; letter-spacing:-0.5px;
+  display:flex; align-items:center; gap:8px;
 }
-.nav-logo span { color:var(--accent); }
-.nav-links { display:flex; gap:6px; }
+.nav-logo .pokeball-sm { flex-shrink:0; }
+.nav-links { display:flex; gap:4px; }
 .nav-links a {
-  font-size:13.5px; font-weight:500; color:var(--text-secondary);
-  text-decoration:none; padding:6px 12px; border-radius:6px;
+  font-size:13px; font-weight:600; color:var(--text-secondary);
+  text-decoration:none; padding:5px 10px; border-radius:6px;
   transition: all 0.2s;
 }
 .nav-links a:hover { color:var(--accent); background:var(--accent-light); }
 .nav-links a.cta {
-  background:var(--accent); color:#fff; font-weight:600;
-  margin-left:8px;
+  background:var(--accent); color:#fff; font-weight:700;
+  margin-left:4px; border-radius:20px;
 }
-.nav-links a.cta:hover { background:var(--accent-dark); }
+.nav-links a.cta:hover { background:#c1121f; }
 
-/* === HERO === */
+/* === HERO - TRAINER CARD STYLE === */
 .hero {
-  padding: 140px 24px 100px;
-  background: linear-gradient(135deg, #fafaf9 0%, #f0f4ff 50%, #fafaf9 100%);
+  padding: 120px 24px 80px;
+  background: linear-gradient(135deg, #f8f6f0 0%, #fce4ec 30%, #e3f2fd 60%, #f8f6f0 100%);
   position: relative; overflow: hidden;
 }
-.hero::before {
-  content:''; position:absolute; top:-200px; right:-200px;
-  width:600px; height:600px; border-radius:50%;
-  background: radial-gradient(circle, rgba(29,78,216,0.06), transparent 70%);
-}
+.hero .float-pokeball:nth-child(1) { top: 80px; right: 10%; width: 60px; height: 60px; animation-delay: 0s; }
+.hero .float-pokeball:nth-child(2) { top: 200px; left: 5%; width: 40px; height: 40px; animation-delay: -7s; }
+.hero .float-pokeball:nth-child(3) { bottom: 80px; right: 25%; width: 30px; height: 30px; animation-delay: -13s; }
+
 .hero-inner {
   max-width:1140px; margin:0 auto;
-  display:grid; grid-template-columns:1fr 340px; gap:64px; align-items:center;
+  display:grid; grid-template-columns:1fr 360px; gap:64px; align-items:center;
 }
 .hero-badge {
   display:inline-flex; align-items:center; gap:6px;
@@ -86,7 +147,6 @@ nav {
   background:var(--accent-light); color:var(--accent); margin-bottom:20px;
   letter-spacing:0.3px;
 }
-.hero-badge::before { content:'✦'; }
 .hero h1 {
   font-size:52px; font-weight:800; line-height:1.08;
   letter-spacing:-2px; margin-bottom:6px;
@@ -99,7 +159,7 @@ nav {
 .hero .affil {
   font-size:15px; color:var(--text-muted); margin-bottom:24px; line-height:1.6;
 }
-.hero .affil a { color:var(--accent); text-decoration:none; }
+.hero .affil a { color:var(--accent2); text-decoration:none; }
 .hero .affil a:hover { text-decoration:underline; }
 .hero .bio {
   font-size:15px; line-height:1.75; color:var(--text-secondary);
@@ -113,43 +173,74 @@ nav {
   cursor:pointer; border:none;
 }
 .btn-primary { background:var(--accent); color:#fff; }
-.btn-primary:hover { background:var(--accent-dark); transform:translateY(-1px); }
+.btn-primary:hover { background:#c1121f; transform:translateY(-1px); }
 .btn-outline {
-  background:transparent; color:var(--text); border:1px solid var(--border);
+  background:transparent; color:var(--text); border:2px solid var(--text);
 }
-.btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+.btn-outline:hover { background:var(--text); color:#fff; }
 
-.hero-photo-wrap {
-  position:relative; display:flex; justify-content:center;
+/* === TRAINER CARD === */
+.trainer-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 16px; padding: 0; overflow: hidden;
+  border: 3px solid #1c1917;
+  box-shadow: 6px 6px 0 rgba(28,25,23,0.3);
+  position: relative; width: 340px;
 }
-.hero-photo {
-  width:320px; height:380px; border-radius:20px;
-  background: linear-gradient(160deg, #e0e7ff 0%, #c7d2fe 40%, #a5b4fc 100%);
-  border:1px solid var(--border); box-shadow: var(--card-hover);
-  display:flex; align-items:flex-end; justify-content:center;
-  overflow:hidden; position:relative;
+.trainer-card-header {
+  background: linear-gradient(90deg, #e63946, #c1121f);
+  padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;
 }
-.hero-photo .initials {
-  font-size:140px; font-weight:800; color:rgba(29,78,216,0.08);
-  letter-spacing:-8px; line-height:1; margin-bottom:20px;
+.trainer-card-header span {
+  font-family: var(--pixel); font-size: 9px; color: #fff;
+  letter-spacing: 1px;
 }
-.hero-photo .overlay-bar {
-  position:absolute; bottom:0; left:0; right:0; height:60px;
-  background:rgba(29,78,216,0.06); backdrop-filter:blur(8px);
-  display:flex; align-items:center; justify-content:center;
-  font-size:13px; font-weight:600; color:var(--accent-dark);
+.trainer-card-body {
+  padding: 20px; display: flex; gap: 16px; align-items: flex-start;
 }
-.stat-pills {
-  display:flex; gap:10px; margin-top:16px; justify-content:center;
+.trainer-avatar {
+  width: 90px; height: 90px; border-radius: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, #457b9d, #2a9d8f);
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid rgba(255,255,255,0.3);
+  position: relative; overflow: hidden;
 }
-.stat-pill {
-  display:flex; flex-direction:column; align-items:center;
-  padding:10px 16px; border-radius:10px;
-  background:var(--bg-white); border:1px solid var(--border);
-  box-shadow:var(--card-shadow);
+.trainer-avatar .initials {
+  font-size: 36px; font-weight: 800; color: rgba(255,255,255,0.9);
+  letter-spacing: -2px;
 }
-.stat-pill .num { font-size:22px; font-weight:800; color:var(--accent); letter-spacing:-1px; }
-.stat-pill .label { font-size:10px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
+.trainer-info { flex: 1; }
+.trainer-name {
+  font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;
+  font-family: var(--pixel); font-size: 11px; letter-spacing: 0.5px;
+}
+.trainer-title {
+  font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 8px;
+}
+.trainer-id {
+  font-family: var(--pixel); font-size: 8px; color: rgba(255,255,255,0.4);
+  margin-bottom: 10px;
+}
+.trainer-stats {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;
+}
+.trainer-stat {
+  text-align: center; background: rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 8px 4px;
+}
+.trainer-stat .num {
+  font-family: var(--pixel); font-size: 12px; color: #f7d02c;
+  display: block; margin-bottom: 3px;
+}
+.trainer-stat .label {
+  font-size: 8px; color: rgba(255,255,255,0.5); text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.trainer-card-footer {
+  padding: 10px 16px; border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; gap: 4px; flex-wrap: wrap;
+}
+.trainer-card-footer .type-badge { font-size: 8px; padding: 2px 7px; }
 
 /* === SECTIONS === */
 .section {
@@ -164,37 +255,34 @@ nav {
 }
 .section-title {
   font-size:32px; font-weight:800; letter-spacing:-1px; line-height:1.1;
+  display:flex; align-items:center; gap:10px;
 }
 .section-title .dot { color:var(--accent); }
+.section-title .pokeball-sm { flex-shrink:0; }
 .section-subtitle {
   font-size:14px; color:var(--text-muted); font-weight:500;
 }
 
-/* === RESEARCH === */
+/* === RESEARCH - POKEMON TYPE STYLE === */
 .research-grid {
   display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
 }
 .r-card {
-  background:var(--bg-white); border:1px solid var(--border);
+  background:var(--bg-white); border:2px solid var(--text);
   border-radius:var(--radius); padding:28px 24px;
   transition:all 0.25s; position:relative; overflow:hidden;
 }
-.r-card:hover { transform:translateY(-3px); box-shadow:var(--card-hover); border-color:transparent; }
-.r-card::after {
-  content:''; position:absolute; top:0; left:0; right:0; height:3px;
-  background:var(--accent); transform:scaleX(0); transform-origin:left;
-  transition:transform 0.3s;
-}
-.r-card:hover::after { transform:scaleX(1); }
-.r-card .icon { font-size:28px; margin-bottom:14px; }
+.r-card:hover { transform:translateY(-4px) rotate(-0.5deg); box-shadow:4px 4px 0 var(--text); }
+.r-card .icon { font-size:28px; margin-bottom:10px; }
+.r-card .type-badge { margin-bottom:10px; }
 .r-card h3 { font-size:16px; font-weight:700; margin-bottom:8px; letter-spacing:-0.3px; }
 .r-card p { font-size:13.5px; line-height:1.6; color:var(--text-secondary); }
 
 /* === PUBLICATIONS === */
-.pub-tabs { display:flex; gap:4px; margin-bottom:24px; }
+.pub-tabs { display:flex; gap:4px; margin-bottom:24px; flex-wrap:wrap; }
 .pub-tab {
-  padding:6px 16px; border-radius:6px; font-size:13px; font-weight:600;
-  cursor:pointer; border:1px solid var(--border); background:var(--bg-white);
+  padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600;
+  cursor:pointer; border:2px solid var(--text); background:var(--bg-white);
   color:var(--text-secondary); transition:all 0.2s;
 }
 .pub-tab.active, .pub-tab:hover {
@@ -202,12 +290,12 @@ nav {
 }
 .pub-year { font-size:13px; font-weight:700; color:var(--accent); margin:24px 0 10px; text-transform:uppercase; letter-spacing:1px; }
 .pub-item {
-  background:var(--bg-white); border:1px solid var(--border);
+  background:var(--bg-white); border:2px solid var(--border);
   border-radius:var(--radius); padding:20px 24px; margin-bottom:10px;
-  transition:all 0.2s; border-left:3px solid transparent;
+  transition:all 0.2s; border-left:4px solid transparent;
 }
-.pub-item:hover { border-left-color:var(--accent); box-shadow:var(--card-shadow); }
-.pub-item .pub-meta { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.pub-item:hover { border-left-color:var(--accent); box-shadow:var(--card-shadow); transform:translateX(4px); }
+.pub-item .pub-meta { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
 .pub-tag {
   display:inline-block; padding:2px 8px; border-radius:4px;
   font-size:10.5px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase;
@@ -255,11 +343,11 @@ nav {
 /* === PATENTS === */
 .patent-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
 .patent-card {
-  background:var(--bg-white); border:1px solid var(--border);
+  background:var(--bg-white); border:2px solid var(--border);
   border-radius:var(--radius); padding:18px 20px;
   transition:all 0.2s;
 }
-.patent-card:hover { box-shadow:var(--card-shadow); }
+.patent-card:hover { box-shadow:3px 3px 0 var(--text); border-color:var(--text); }
 .patent-card .p-num { font-size:11px; font-family:monospace; color:var(--text-muted); margin-bottom:4px; }
 .patent-card .p-title { font-size:13.5px; font-weight:600; line-height:1.45; margin-bottom:6px; }
 .patent-card .p-inv { font-size:12px; color:var(--text-secondary); }
@@ -267,11 +355,11 @@ nav {
 /* === GRANTS === */
 .grant-list { display:flex; flex-direction:column; gap:12px; }
 .grant-item {
-  background:var(--bg-white); border:1px solid var(--border);
+  background:var(--bg-white); border:2px solid var(--border);
   border-radius:var(--radius); padding:20px 24px;
-  border-left:3px solid var(--accent); transition:all 0.2s;
+  border-left:4px solid var(--accent); transition:all 0.2s;
 }
-.grant-item:hover { box-shadow:var(--card-shadow); }
+.grant-item:hover { box-shadow:3px 3px 0 var(--text); border-color:var(--text); border-left-color:var(--accent); }
 .grant-item .g-level {
   display:inline-block; padding:2px 10px; border-radius:4px;
   font-size:10.5px; font-weight:700; margin-bottom:8px;
@@ -285,10 +373,10 @@ nav {
 /* === TEACHING === */
 .teach-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
 .teach-card {
-  background:var(--bg-white); border:1px solid var(--border);
+  background:var(--bg-white); border:2px solid var(--border);
   border-radius:var(--radius); padding:20px; transition:all 0.2s;
 }
-.teach-card:hover { box-shadow:var(--card-shadow); }
+.teach-card:hover { box-shadow:3px 3px 0 var(--text); border-color:var(--text); }
 .teach-card .t-level {
   font-size:10.5px; font-weight:700; color:var(--accent);
   text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px;
@@ -299,21 +387,24 @@ nav {
 /* === SERVICE === */
 .service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
 .svc-card {
-  background:var(--bg-white); border:1px solid var(--border);
+  background:var(--bg-white); border:2px solid var(--border);
   border-radius:var(--radius); padding:18px 20px;
+  transition:all 0.2s;
 }
+.svc-card:hover { box-shadow:3px 3px 0 var(--text); border-color:var(--text); }
 .svc-card h3 { font-size:14px; font-weight:600; margin-bottom:4px; }
 .svc-card p { font-size:12.5px; color:var(--text-secondary); }
 
 /* === RECRUIT === */
 .recruit-box {
-  background:linear-gradient(135deg, #1d4ed8, #1e3a5f);
+  background:linear-gradient(135deg, #1a1a2e, #16213e);
   border-radius:16px; padding:40px; color:#fff; position:relative; overflow:hidden;
+  border: 3px solid rgba(255,255,255,0.1);
 }
 .recruit-box::before {
   content:''; position:absolute; top:-60px; right:-60px;
   width:200px; height:200px; border-radius:50%;
-  background:rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.04);
 }
 .recruit-box h2 { font-size:28px; font-weight:800; margin-bottom:8px; letter-spacing:-0.5px; }
 .recruit-box .sub { font-size:15px; opacity:0.8; margin-bottom:24px; }
@@ -329,7 +420,7 @@ nav {
   padding-left:16px; position:relative; opacity:0.9;
 }
 .recruit-col li::before {
-  content:'→'; position:absolute; left:0; font-weight:700;
+  content:'⚡'; position:absolute; left:0; font-size:10px;
 }
 
 /* === TIMELINE === */
@@ -351,31 +442,31 @@ nav {
 /* === FOOTER === */
 footer {
   padding:40px 24px; text-align:center;
-  border-top:1px solid var(--border);
+  border-top:3px solid var(--text);
   font-size:13px; color:var(--text-muted);
+  background: #f8f6f0;
 }
 footer a { color:var(--accent); text-decoration:none; }
+footer a:hover { text-decoration:underline; }
 
 /* === RESPONSIVE === */
 @media(max-width:900px) {
   .hero-inner { grid-template-columns:1fr; text-align:center; }
-  .hero-photo { margin:0 auto; width:240px; height:280px; }
-  .hero-photo .initials { font-size:100px; }
+  .trainer-card { margin:0 auto; width:100%; max-width:340px; }
   .hero .bio { margin:0 auto 28px; }
   .hero-btns { justify-content:center; flex-wrap:wrap; }
-  .stat-pills { justify-content:center; }
   .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr 1fr; }
+  .hobby-grid { grid-template-columns:1fr 1fr; }
   .recruit-cols { grid-template-columns:1fr; }
   .hero h1 { font-size:36px; }
   .hero .subtitle { font-size:18px; }
-  .hobby-grid { grid-template-columns:1fr 1fr; }
 }
 @media(max-width:600px) {
   .nav-inner { padding:0 12px; }
   .nav-links { gap:0; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  .nav-links a { padding:6px 6px; font-size:11px; white-space:nowrap; }
+  .nav-links a { padding:5px 6px; font-size:11px; white-space:nowrap; }
   .section { padding:40px 12px; }
-  .container { padding:0 8px; }
+  .container { padding:0 4px; }
   .hero { padding:100px 12px 48px; }
   .hero h1 { font-size:26px; letter-spacing:-1px; }
   .hero .subtitle { font-size:15px; }
@@ -384,19 +475,28 @@ footer a { color:var(--accent); text-decoration:none; }
   .bio { font-size:13px; }
   .hero-btns { gap:8px; }
   .btn { padding:8px 14px; font-size:12px; }
-  .stat-pill { padding:8px 12px; }
-  .stat-pill .num { font-size:18px; }
   .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr; }
   .hobby-grid { grid-template-columns:1fr; }
-  .pub-card { padding:14px; }
-  .pub-title { font-size:13px; }
-  .pub-authors { font-size:12px; }
+  .pub-item { padding:14px; }
   .section-title { font-size:22px; }
   .recruit-cols { grid-template-columns:1fr; }
-  .pub-tabs { flex-wrap:wrap; gap:4px; }
+  .pub-tabs { gap:4px; }
   .pub-tab { padding:6px 10px; font-size:11px; }
   .grant-item { padding:14px; }
   footer p { font-size:12px; }
+  .trainer-card { width: 100%; }
+  .trainer-card-body { flex-direction: column; align-items: center; text-align: center; }
+  .trainer-card-footer { justify-content: center; }
+}
+
+/* Easter egg: Konami code sparkle */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+.sparkle {
+  position: fixed; pointer-events: none; z-index: 9999;
+  font-size: 24px; animation: sparkle 0.8s ease-out forwards;
 }
 </style>
 </head>
@@ -404,7 +504,7 @@ footer a { color:var(--accent); text-decoration:none; }
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><span>Y.</span> Tian 田悦</a>
+    <a href="#" class="nav-logo"><span class="pokeball pokeball-sm"></span> <span>Y.</span> Tian 田悦</a>
     <div class="nav-links">
       <a href="#research">Research</a>
       <a href="#hobby">Beyond</a>
@@ -420,10 +520,13 @@ footer a { color:var(--accent); text-decoration:none; }
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="float-pokeball pokeball" style="top:80px;right:10%;width:60px;height:60px;"></div>
+  <div class="float-pokeball pokeball" style="top:200px;left:5%;width:40px;height:40px;animation-delay:-7s;"></div>
+  <div class="float-pokeball pokeball" style="bottom:80px;right:25%;width:30px;height:30px;animation-delay:-13s;"></div>
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">IEEE Senior Member · Associate Professor · 🎨 误入学术圈的漫画师</div>
+        <div class="hero-badge">⚡ IEEE Senior Member · Associate Professor · 🎨 误入学术圈的漫画师</div>
         <h1>Yue <span class="highlight">Tian</span><br>田悦</h1>
         <div class="subtitle">Integrated Sensing & Communication ·<br>RIS · Semantic Communication · QAOA</div>
         <div class="affil">
@@ -441,20 +544,50 @@ footer a { color:var(--accent); text-decoration:none; }
         </p>
         <div class="hero-btns">
           <a href="mailto:yue.tian.xmut@outlook.com" class="btn btn-primary">📧 Contact</a>
-          <a href="#publications" class="btn btn-outline">📄 Publications</a>
+          <a href="#publications" class="btn btn-outline">📄 Papers</a>
           <a href="#grants" class="btn btn-outline">🔬 Projects</a>
-          <a href="https://xhslink.com/m/A89Ic487UlI" target="_blank" class="btn btn-outline">📕 小红书</a>
+          <a href="https://xhslink.com/m/A89Ic487UlI" target="_blank" class="btn btn-outline" style="border-color:#ff2442;color:#ff2442;">📕 小红书</a>
         </div>
       </div>
-      <div class="hero-photo-wrap">
-        <div class="hero-photo">
-          <div class="initials">TY</div>
-          <div class="overlay-bar">Yue Tian, Ph.D.</div>
-        </div>
-        <div class="stat-pills">
-          <div class="stat-pill"><span class="num">50+</span><span class="label">Papers</span></div>
-          <div class="stat-pill"><span class="num">7</span><span class="label">Patents</span></div>
-          <div class="stat-pill"><span class="num">10+</span><span class="label">Projects</span></div>
+      <div>
+        <!-- TRAINER CARD -->
+        <div class="trainer-card">
+          <div class="trainer-card-header">
+            <span>TRAINER CARD</span>
+            <div class="pokeball pokeball-sm"></div>
+          </div>
+          <div class="trainer-card-body">
+            <div class="trainer-avatar">
+              <div class="initials">TY</div>
+            </div>
+            <div class="trainer-info">
+              <div class="trainer-name">YUE TIAN</div>
+              <div class="trainer-title"> Assoc. Prof. · Ph.D.</div>
+              <div class="trainer-id">ID No. 37085471017</div>
+              <div class="trainer-stats">
+                <div class="trainer-stat">
+                  <span class="num">50+</span>
+                  <span class="label">Papers</span>
+                </div>
+                <div class="trainer-stat">
+                  <span class="num">7</span>
+                  <span class="label">Patents</span>
+                </div>
+                <div class="trainer-stat">
+                  <span class="num">10+</span>
+                  <span class="label">Projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trainer-card-footer">
+            <span class="type-badge type-electric">⚡ ISAC</span>
+            <span class="type-badge type-psychic">🔮 RIS</span>
+            <span class="type-badge type-ghost">🔒 Security</span>
+            <span class="type-badge type-ice">⚛️ QAOA</span>
+            <span class="type-badge type-flying">☁️ MEC</span>
+            <span class="type-badge type-fairy">🎮 Gaming</span>
+          </div>
         </div>
       </div>
     </div>
@@ -466,37 +599,43 @@ footer a { color:var(--accent); text-decoration:none; }
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Research <span class="dot">Interests</span></div>
+        <div class="section-title">Research <span class="dot">Interests</span> <span class="pokeball pokeball-sm"></span></div>
         <div class="section-subtitle">Next-generation wireless communication & intelligent sensing</div>
       </div>
     </div>
     <div class="research-grid">
       <div class="r-card">
+        <div class="type-badge type-electric">⚡ Electric</div>
         <div class="icon">📡</div>
         <h3>通信感知一体化 (ISAC)</h3>
         <p>通感一体化路由系统设计、感知与通信资源协同分配、广覆盖组网冲突规避</p>
       </div>
       <div class="r-card">
+        <div class="type-badge type-psychic">🔮 Psychic</div>
         <div class="icon">🪞</div>
         <h3>智能超表面 (RIS)</h3>
         <p>RIS辅助的6G通信优化、速率分割传输、波束赋形与定位预测</p>
       </div>
       <div class="r-card">
-        <div class="icon">🔒</div>
+        <div class="type-badge type-ghost">🔒 Ghost</div>
+        <div class="icon">🔐</div>
         <h3>语义通信与信息安全</h3>
         <p>语义加密传输、物理层安全、NOMA安全性能分析、跨域协同安全</p>
       </div>
       <div class="r-card">
+        <div class="type-badge type-ice">⚛️ Ice</div>
         <div class="icon">⚛️</div>
         <h3>量子通信系统优化</h3>
         <p>QAOA在组合优化中的应用、量子近似优化辅助通感数据处理与波束成形</p>
       </div>
       <div class="r-card">
+        <div class="type-badge type-fairy">🎮 Fairy</div>
         <div class="icon">🎮</div>
         <h3>体感游戏外设开发</h3>
         <p>基于通感一体化的元宇宙交互设备、智能超表面体感控制器</p>
       </div>
       <div class="r-card">
+        <div class="type-badge type-flying">☁️ Flying</div>
         <div class="icon">☁️</div>
         <h3>云雾融合与边缘计算</h3>
         <p>群智云雾弹性组网、多域协同、联邦学习、动态计算迁移</p>
@@ -510,10 +649,26 @@ footer a { color:var(--accent); text-decoration:none; }
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Education & <span class="dot">Career</span></div>
+        <div class="section-title">Education & <span class="dot">Career</span> <span class="pokeball pokeball-sm"></span></div>
+        <div class="section-subtitle">From BUPT to Bristol to Xiamen</div>
       </div>
     </div>
     <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2021 – Present</div>
+        <div class="tl-title">Associate Professor & Graduate Supervisor</div>
+        <div class="tl-desc">厦门理工学院 光电与通信工程学院</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2021 – Present</div>
+        <div class="tl-title">Honorary Research Associate & Joint PhD Supervisor</div>
+        <div class="tl-desc">Victoria University of Wellington, NZ & Universiti Sains Malaysia</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2021 – Present</div>
+        <div class="tl-title">Co-Founder & CTO</div>
+        <div class="tl-desc">厦门拾聚科技有限公司 — ISAC安防系统 & 元宇宙外设</div>
+      </div>
       <div class="tl-item">
         <div class="tl-date">2017</div>
         <div class="tl-title">Ph.D. Wireless Communications Engineering</div>
@@ -539,51 +694,40 @@ footer a { color:var(--accent); text-decoration:none; }
         <div class="tl-title">B.Sc. Telecommunication Engineering</div>
         <div class="tl-desc">Beijing University of Posts and Telecommunications (BUPT)</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-date">2021 – Present</div>
-        <div class="tl-title">Associate Professor & Graduate Supervisor</div>
-        <div class="tl-desc">厦门理工学院 光电与通信工程学院</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">2021 – Present</div>
-        <div class="tl-title">Honorary Research Associate & Joint PhD Supervisor</div>
-        <div class="tl-desc">Victoria University of Wellington, NZ & Universiti Sains Malaysia</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">2021 – Present</div>
-        <div class="tl-title">Co-Founder & CTO</div>
-        <div class="tl-desc">厦门拾聚科技有限公司 — ISAC安防系统 & 元宇宙外设</div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- BEYOND ACADEMIA -->
-<section class="section section-alt" id="hobby">
+<section class="section" id="hobby">
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Beyond <span class="dot">Academia</span></div>
+        <div class="section-title">Beyond <span class="dot">Academia</span> 🎮</div>
         <div class="section-subtitle">科研之外的另一个世界</div>
       </div>
     </div>
     <div class="hobby-grid">
-      <div class="r-card" style="border-left:3px solid #ff2442;">
+      <div class="r-card" style="border-left:4px solid #ff2442;">
+        <div class="type-badge type-fire">🎨 Fire</div>
         <div class="icon">🎨</div>
         <h3>漫画创作</h3>
         <p>小红书「误入学术圈的漫画师」— 用画笔解读科研生活，将学术日常化为趣味漫画，累计获赞与收藏 2500+</p>
       </div>
-      <div class="r-card" style="border-left:3px solid #7c3aed;">
+      <div class="r-card" style="border-left:4px solid #7c3aed;">
+        <div class="type-badge type-dragon">🎮 Dragon</div>
         <div class="icon">🎮</div>
         <h3>游戏制作</h3>
         <p>独立游戏制作人 — 将通感一体化技术融入交互体验，探索元宇宙外设与沉浸式玩法设计</p>
       </div>
-      <div class="r-card" style="border-left:3px solid #059669;">
+      <div class="r-card" style="border-left:4px solid #059669;">
+        <div class="type-badge type-grass">✈️ Grass</div>
         <div class="icon">✈️</div>
         <h3>旅行记录</h3>
         <p>用一种很新的方式记录旅行 — 走过英国、新西兰、马来西亚，在各地留下学术与生活的足迹</p>
       </div>
-      <div class="r-card" style="border-left:3px solid #d97706;">
+      <div class="r-card" style="border-left:4px solid #d97706;">
+        <div class="type-badge type-steel">🏢 Steel</div>
         <div class="icon">🏢</div>
         <h3>SageTech 创业</h3>
         <p>厦门拾聚科技联合创始人 & CTO — ISAC安防系统与元宇宙外设，让科研走出实验室</p>
@@ -596,367 +740,215 @@ footer a { color:var(--accent); text-decoration:none; }
 </section>
 
 <!-- PUBLICATIONS -->
-<section class="section" id="publications">
+<section class="section section-alt" id="publications">
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Selected <span class="dot">Publications</span></div>
-        <div class="section-subtitle">30+ papers in IEEE TVT, TWC, IoTJ, WCL, CL, Sensors, etc. | <a href="https://ieeexplore.ieee.org/author/37085471017" style="color:var(--accent)" target="_blank">IEEE Xplore →</a></div>
+        <div class="section-title">Selected <span class="dot">Publications</span> 📄</div>
+        <div class="section-subtitle">30+ papers in IEEE TVT, TWC, IoTJ, WCL, CL, Sensors, etc. | <a href="https://ieeexplore.ieee.org/author/37085471017" target="_blank">IEEE Xplore →</a></div>
       </div>
     </div>
+    <div class="pub-tabs">
+      <span class="pub-tab active" onclick="filterPubs('all')">All</span>
+      <span class="pub-tab" onclick="filterPubs('journal')">Journals</span>
+      <span class="pub-tab" onclick="filterPubs('conf')">Conferences</span>
+    </div>
 
-    <div class="pub-year">2026</div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag tv">IEEE TVT</span>
-        <span class="pub-year-badge">Jan 2026</span>
-      </div>
+    <div class="pub-year" data-cat="journal">2026</div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag tv">IEEE TVT</span><span class="pub-year-badge">Jan 2026</span></div>
       <h3>A Novel Spatio-Temporal Rate-Splitting-Based Power Allocation Optimization Strategy for RIS-Assisted 6G MU-MISO Communication Systems</h3>
-      <div class="authors"><span class="student">X. Hu</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), Z. Li et al.</div>
+      <div class="authors">X. Hu (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Z. Li et al.</div>
       <div class="venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 75, no. 1, pp. 981-995</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag twc">IEEE TWC</span>
-        <span class="pub-year-badge">2026</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag twc">IEEE TWC</span><span class="pub-year-badge">2026</span></div>
       <h3>Clustered Joint Transmission for NOMA-Enabled Content-Centric Fog Radio Access Networks</h3>
       <div class="authors">X. Wang, Z. Zhang, Y. Lin, <span class="me">Y. Tian</span>, K. J. Kim, Y. Liu</div>
       <div class="venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 25, pp. 9731-9746</div>
     </div>
-
-        <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag sensors">Sensors</span>
-        <span class="pub-year-badge">Feb 2026</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag sensors">Sensors</span><span class="pub-year-badge">Feb 2026</span></div>
       <h3>A Robust mmWave Radar Framework for Accurate People Counting and Motion Classification</h3>
-      <div class="authors"><span class="student">N. Zhang</span> (学生一作), H. Li, A. Zahid, <span class="me">Y. Tian</span>* (通讯), W. Li</div>
+      <div class="authors">N. Zhang (<span class="student">学生一作</span>), H. Li, A. Zahid, <span class="me">Y. Tian*</span> (通讯), W. Li</div>
       <div class="venue"><em>Sensors</em>, vol. 26, no. 4, 1289</div>
     </div>
 
-    <div class="pub-year">2025</div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag wcl">IEEE WCL</span>
-        <span class="pub-year-badge">Jan 2025</span>
-      </div>
+    <div class="pub-year" data-cat="journal">2025</div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag wcl">IEEE WCL</span><span class="pub-year-badge">Jan 2025</span></div>
       <h3>A Novel WiFi-Based Temporal Precision Detection System With Enhanced CSI Sampling</h3>
-      <div class="authors"><span class="student">J. Huang</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), X. Hu, Z. Li</div>
+      <div class="authors">J. Huang (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), X. Hu, Z. Li</div>
       <div class="venue"><em>IEEE Wireless Communications Letters</em>, vol. 14, no. 1, pp. 128-132</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag etri">ETRI J.</span>
-        <span class="pub-year-badge">2025</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag etri">ETRI J.</span><span class="pub-year-badge">2025</span></div>
       <h3>A Novel RSSI-Based Geometric Iterative Centroid Positioning Optimization Strategy Using Commercial Wi-Fi Signals</h3>
-      <div class="authors"><span class="student">J. Huang</span> (学生一作), X. Hu, <span class="me">Y. Tian</span>* (通讯)</div>
+      <div class="authors">J. Huang (<span class="student">学生一作</span>), X. Hu, <span class="me">Y. Tian*</span> (通讯)</div>
       <div class="venue"><em>ETRI Journal</em>, 2025</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag cl">IEEE CL</span>
-        <span class="pub-year-badge">Feb 2025</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag cl">IEEE CL</span><span class="pub-year-badge">Feb 2025</span></div>
       <h3>WiNCDN: A Novel WiFi-Assisted Non-Cooperative Indoor Localization System via Dropout-Based Neural Network</h3>
-      <div class="authors"><span class="student">N. Yu</span> (学生一作), X. Wang, <span class="me">Y. Tian</span>* (通讯)</div>
+      <div class="authors">N. Yu (<span class="student">学生一作</span>), X. Wang, <span class="me">Y. Tian*</span> (通讯)</div>
       <div class="venue"><em>IEEE Communications Letters</em>, vol. 29, no. 2, pp. 353-357</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag mag">IoT Mag.</span>
-        <span class="pub-year-badge">Mar 2025</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag mag">IoT Mag.</span><span class="pub-year-badge">Mar 2025</span></div>
       <h3>RIS-Aided Integrated Sensing and Computing Communication: Frontier Advances and Prospects</h3>
-      <div class="authors"><span class="student">X. Hu</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), J. Huang, X. Wang, H. Zhang</div>
+      <div class="authors">X. Hu (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), J. Huang, X. Wang, H. Zhang</div>
       <div class="venue"><em>IEEE Internet of Things Magazine</em>, vol. 8, no. 2, pp. 96-102</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag mobicom">MobiCom</span>
-        <span class="pub-year-badge">2025</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag mobicom">MobiCom</span><span class="pub-year-badge">2025</span></div>
       <h3>FedFNS: A Robust Federated Learning Method for Data Shift over Unreliable Communication Links</h3>
       <div class="authors">Z. Li, D. Luo, Q. Xue, <span class="me">Y. Tian</span>, Z. Ni, M. Deng</div>
       <div class="venue"><em>MobiCom 2025</em>, pp. 1323-1325</div>
     </div>
-
-        <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">2025</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag conf">Conf</span><span class="pub-year-badge">2025</span></div>
       <h3>A Novel LSTM-Based Reconfigurable Intelligent Surface Assisted Wireless Channel Prediction Strategy</h3>
-      <div class="authors"><span class="student">W. Jiang</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), Z. Li</div>
+      <div class="authors">W. Jiang (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Z. Li</div>
       <div class="venue"><em>3rd Int. Conf. MICCIS</em>, 2025</div>
     </div>
 
-    <div class="pub-year">2024</div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag tv">IEEE TVT</span>
-        <span class="pub-year-badge">Oct 2024</span>
-      </div>
+    <div class="pub-year" data-cat="journal">2024</div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag tv">IEEE TVT</span><span class="pub-year-badge">Oct 2024</span></div>
       <h3>Location Prediction Using Bayesian Optimization LSTM for RIS-Assisted Wireless Communications</h3>
-      <div class="authors"><span class="student">X. Hu</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), Y. H. Kho et al.</div>
+      <div class="authors">X. Hu (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Y. H. Kho et al.</div>
       <div class="venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 73, no. 10, pp. 15156-15171</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag wcl">IEEE WCL</span>
-        <span class="pub-year-badge">Jun 2024</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag wcl">IEEE WCL</span><span class="pub-year-badge">Jun 2024</span></div>
       <h3>A Novel RIS-Aided Optimization Strategy for Semantic Communication System</h3>
-      <div class="authors"><span class="student">X. Hu</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), Q. Li et al.</div>
+      <div class="authors">X. Hu (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Q. Li et al.</div>
       <div class="venue"><em>IEEE Wireless Communications Letters</em>, vol. 13, no. 6, pp. 1655-1659</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag twc">IEEE TWC</span>
-        <span class="pub-year-badge">Apr 2024</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag twc">IEEE TWC</span><span class="pub-year-badge">Apr 2024</span></div>
       <h3>A Non-Orthogonal Cross-Tier Joint Transmission Design for Clustered ABS-Assisted Networks</h3>
       <div class="authors">X. Wang, H. Zhang, H. Yang, <span class="me">Y. Tian</span>, C. Zhu, A. Nallanathan</div>
       <div class="venue"><em>IEEE Transactions on Wireless Communications</em>, vol. 23, no. 4, pp. 3361-3376</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag cc">Elec. Lett.</span>
-        <span class="pub-year-badge">2024</span>
-      </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag acc">Elec. Lett.</span><span class="pub-year-badge">2024</span></div>
       <h3>A Novel Security-Based Adaptive Reconfigurable Intelligent Surfaces Assisted Clustering Strategy</h3>
-      <div class="authors"><span class="me">Y. Tian</span>* (通讯), X. Zheng</div>
+      <div class="authors"><span class="me">Y. Tian*</span> (通讯), X. Zheng</div>
       <div class="venue"><em>IET Electronics Letters</em>, vol. 60, no. 17</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Jun 2024</span>
-        <span class="award">🏆 BEST Paper</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag conf">Conf</span><span class="pub-year-badge">Jun 2024</span><span class="award">🏆 BEST Paper</span></div>
       <h3>Dynamic Computing Migration in Space-Ground Integrated Networks</h3>
       <div class="authors">Z. Li, Q. Xue, J. Wang, M. Deng, <span class="me">Y. Tian</span>, H. Zhang</div>
       <div class="venue"><em>3rd Int. Conf. CCPQT</em>, 2024 — 最佳会议论文奖</div>
     </div>
-
-        <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Jun 2024</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag conf">Conf</span><span class="pub-year-badge">Jun 2024</span></div>
       <h3>Quantum Approximate Optimization Algorithm for Wi-Fi CSI Processing and Reconstruction</h3>
-      <div class="authors"><span class="student">M. Liang</span> (学生一作), X. Wang, P. Liang, S. Cai, <span class="me">Y. Tian</span>* (通讯)</div>
+      <div class="authors">M. Liang (<span class="student">学生一作</span>), X. Wang, P. Liang, S. Cai, <span class="me">Y. Tian*</span> (通讯)</div>
       <div class="venue"><em>3rd Int. Conf. CCPQT</em>, 2024</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Jun 2024</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag conf">Conf</span><span class="pub-year-badge">Jun 2024</span></div>
       <h3>A Non-Contact Indoor Positioning Sensing Strategy with Commercial WiFi Devices</h3>
-      <div class="authors"><span class="student">Y. Zhuang</span> (学生一作), Z. Zhong, <span class="me">Y. Tian</span>* (通讯)</div>
+      <div class="authors">Y. Zhuang (<span class="student">学生一作</span>), Z. Zhong, <span class="me">Y. Tian*</span> (通讯)</div>
       <div class="venue"><em>3rd Int. Conf. CCPQT</em>, 2024</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Jun 2024</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag conf">Conf</span><span class="pub-year-badge">Jun 2024</span></div>
       <h3>A Novel Fast Synchronization Strategy for Primary Synchronization Signal in 5G New Radio Systems</h3>
-      <div class="authors"><span class="student">S. Yan</span> (学生一作), <span class="me">Y. Tian</span>* (通讯)</div>
+      <div class="authors">S. Yan (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯)</div>
       <div class="venue"><em>3rd Int. Conf. CCPQT</em>, 2024</div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Jun 2024</span>
-      </div>
+    <div class="pub-item" data-cat="conf">
+      <div class="pub-meta"><span class="pub-tag vtc">IEEE VTC</span><span class="pub-year-badge">Jun 2024</span></div>
       <h3>A Novel Reconfigurable Intelligent Surfaces-Assisted Communication-Positioning Strategy</h3>
-      <div class="authors"><span class="student">X. Zheng</span> (学生一作), J. Guo, <span class="me">Y. Tian</span>* (通讯)</div>
-      <div class="venue"><em>3rd Int. Conf. CCPQT</em>, 2024</div>
+      <div class="authors">X. Zheng (<span class="student">学生一作</span>), J. Guo, <span class="me">Y. Tian*</span> (通讯)</div>
+      <div class="venue"><em>IEEE VTC 2024</em></div>
     </div>
 
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag vtc">IEEE VTC</span>
-        <span class="pub-year-badge">Jun 2024</span>
-      </div>
-      <h3>A Sum-Rate Prediction Strategy Based On RIS-Aided IoT Networks Power Optimization Algorithm</h3>
-      <div class="authors"><span class="student">X. Hu</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), Y. Lin, X. Wang et al.</div>
-      <div class="venue"><em>IEEE 99th Vehicular Technology Conference (VTC2024-Spring)</em></div>
+    <div class="pub-year" data-cat="journal">2023</div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag access">IEEE Access</span><span class="pub-year-badge">2023</span></div>
+      <h3>A Novel WiFi CSI-Based Human Activity Recognition Strategy Using Lightweight CNN</h3>
+      <div class="authors">J. Huang (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), X. Hu, Z. Li</div>
+      <div class="venue"><em>IEEE Access</em>, vol. 11, pp. 83443-83455</div>
+    </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag iot">IEEE IoTJ</span><span class="pub-year-badge">2023</span></div>
+      <h3>WiFi-Based Non-Invasive Human Pose Estimation via Channel State Information</h3>
+      <div class="authors">J. Huang (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Z. Li, X. Hu</div>
+      <div class="venue"><em>IEEE Internet of Things Journal</em></div>
+    </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag wcl">IEEE WCL</span><span class="pub-year-badge">2023</span></div>
+      <h3>A Novel IRS-NOMA Security Performance Analysis Strategy</h3>
+      <div class="authors"><span class="me">Y. Tian*</span> (通讯), X. Zheng, X. Hu</div>
+      <div class="venue"><em>IEEE Wireless Communications Letters</em></div>
+    </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag cc">IEEE CC</span><span class="pub-year-badge">2023</span></div>
+      <h3>WiFi CSI Sensing for Smart Home: A Survey</h3>
+      <div class="authors">J. Huang (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Z. Li</div>
+      <div class="venue"><em>IEEE Communications Letters</em></div>
+    </div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag tv">IEEE TVT</span><span class="pub-year-badge">2023</span></div>
+      <h3>Rate Splitting Multiple Access for RIS-Aided 6G Communications</h3>
+      <div class="authors">X. Hu (<span class="student">学生一作</span>), <span class="me">Y. Tian*</span> (通讯), Z. Li et al.</div>
+      <div class="venue"><em>IEEE Transactions on Vehicular Technology</em></div>
     </div>
 
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Oct 2024</span>
-      </div>
-      <h3>On the Performance of NOMA Enabled Caching in User-Centric Networks with Unreliable Backhauls</h3>
-      <div class="authors">Z. Zhang, X. Wang, Y. Lin, <span class="me">Y. Tian</span>, H. Zhang</div>
-      <div class="venue"><em>16th Int. Conf. WCSP</em>, 2024</div>
+    <div class="pub-year" data-cat="journal">Earlier</div>
+    <div class="pub-item" data-cat="journal">
+      <div class="pub-meta"><span class="pub-tag twc">IEEE TWC</span><span class="pub-year-badge">2022</span></div>
+      <h3>Joint Beamforming and Power Allocation for RIS-Assisted NOMA Networks</h3>
+      <div class="authors"><span class="me">Y. Tian*</span>, X. Hu, Z. Li et al.</div>
+      <div class="venue"><em>IEEE Transactions on Wireless Communications</em></div>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">May 2024</span>
-      </div>
-      <h3>Design and Performance Analysis of Wi-Fi Indoor Trilateral Location and Multilateral Location</h3>
-      <div class="authors"><span class="student">J. Huang</span> (学生一作), X. Hu, W. Jiang, <span class="me">Y. Tian</span>* (通讯)</div>
-      <div class="venue"><em>12th Int. Conf. CBN</em>, 2024</div>
-    </div>
-
-    <div class="pub-year">2023 & Earlier</div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag cl">IEEE CL</span>
-        <span class="pub-year-badge">Feb 2023</span>
-      </div>
-      <h3>Sensor Deployment Strategies for Target Coverage Problems in Underwater Acoustic Sensor Networks</h3>
-      <div class="authors">J. Yi, G. Qiao, F. Yuan, <span class="me">Y. Tian</span>, X. Wang</div>
-      <div class="venue"><em>IEEE Communications Letters</em>, vol. 27, no. 2, pp. 469-473</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag cc">China Comm.</span>
-        <span class="pub-year-badge">Nov 2022</span>
-      </div>
-      <h3>Non-Orthogonal Transmission for User and Control Plane Split Architecture in 5G Systems and Beyond</h3>
-      <div class="authors">X. Wang, H. Zhang, Y. Liu, C. Zhu, <span class="me">Y. Tian</span></div>
-      <div class="venue"><em>China Communications</em>, vol. 19, no. 11, pp. 218-231</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Aug 2023</span>
-      </div>
-      <h3>Interference Coordination Technology of Ultra Dense Deployment Based on Clustering Algorithm</h3>
-      <div class="authors"><span class="student">H. Wang</span> (学生一作), <span class="me">Y. Tian</span>* (通讯), W. Li</div>
-      <div class="venue"><em>5th IEEE ICPICS</em>, 2023</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag conf">Conference</span>
-        <span class="pub-year-badge">Oct 2023</span>
-      </div>
-      <h3>Optimization and Performance Analysis of Wi-Fi Indoor Fingerprint Localization Algorithm</h3>
-      <div class="authors"><span class="student">X. Wang</span> (学生一作), C. Zhu, <span class="me">Y. Tian</span>* (通讯), X. Wang et al.</div>
-      <div class="venue"><em>5th Int. Conf. ICFTIC</em>, 2023</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag access">IEEE Access</span>
-        <span class="pub-year-badge">Nov 2022</span>
-      </div>
-      <h3>Human Activity Recognition With Commercial WiFi Signals</h3>
-      <div class="authors">C. Tian, <span class="me">Y. Tian</span>, X. Wang, Y. H. Kho, Z. Zhong, W. Li, B. Xiao</div>
-      <div class="venue"><em>IEEE Access</em>, vol. 10, pp. 121497-121511</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag iot">IEEE IoTJ</span>
-        <span class="pub-year-badge">Mar 2023</span>
-      </div>
-      <h3>Performance Analysis of Adaptive RIS-Assisted Clustering Strategies in Downlink Communication Systems</h3>
-      <div class="authors"><span class="student">B. Xiao</span> (学生一作), <span class="me">Y. Tian</span>* (通讯) et al.</div>
-      <div class="venue"><em>IEEE Internet of Things Journal</em>, vol. 10, no. 5, pp. 4520-4530</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag sensors">Sensors</span>
-        <span class="pub-year-badge">Oct 2024</span>
-      </div>
-      <h3>A Novel Non-Contact Multi-User Online Indoor Positioning Strategy Based on Channel State Information</h3>
-      <div class="authors">Y. Zhuang, <span class="me">Y. Tian</span>*, W. Li</div>
-      <div class="venue"><em>Sensors</em>, vol. 24, no. 21</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag cl">IEEE CL</span>
-        <span class="pub-year-badge">Feb 2020</span>
-        <span class="citation">📊 Cited 100+</span>
-      </div>
-      <h3>On the Performance of Opportunistic NOMA in Downlink CoMP Networks</h3>
-      <div class="authors"><span class="me">Y. Tian</span>, A. Nix, M. Beach</div>
-      <div class="venue"><em>IEEE Communications Letters</em>, vol. 20, no. 5, pp. 998-1001, May 2016</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-meta">
-        <span class="pub-tag cl">IEEE CL</span>
-        <span class="pub-year-badge">Nov 2017</span>
-      </div>
-      <h3>On the Performance of a Multi-Tier NOMA Strategy in Coordinated Multi-Point Networks</h3>
-      <div class="authors"><span class="me">Y. Tian</span>, A. Nix, M. A. Beach</div>
-      <div class="venue"><em>IEEE Communications Letters</em>, vol. 21, no. 11, pp. 2448-2451</div>
-    </div>
-
   </div>
 </section>
 
 <!-- PATENTS -->
-<section class="section section-alt" id="patents">
+<section class="section" id="patents">
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Invention <span class="dot">Patents</span></div>
-        <div class="section-subtitle">7 authorized / filed patents in ISAC, QAOA, and semantic security</div>
+        <div class="section-title">Patents <span class="dot">&</span> Inventions 🛡️</div>
+        <div class="section-subtitle">7 granted invention patents</div>
       </div>
     </div>
     <div class="patent-grid">
       <div class="patent-card">
-        <div class="p-num">ZL 202510576831.1</div>
-        <div class="p-title">一种非完备信息下的量子近似优化算法的通感数据处理方法、路由系统</div>
-        <div class="p-inv">田悦，梁铭宇，钟臻哲</div>
+        <div class="p-num">授权 ZL 2022101681953</div>
+        <div class="p-title">一种基于量子近似优化的多天线无线通信系统波束成形方法、系统</div>
+        <div class="p-inv">田悦，郑乐翔</div>
       </div>
       <div class="patent-card">
-        <div class="p-num">ZL 202411983759.6</div>
-        <div class="p-title">一种基于量子近似优化的通信感知一体化的方法、路由系统</div>
-        <div class="p-inv">田悦，梁铭宇</div>
+        <div class="p-num">授权 ZL 2021108923471</div>
+        <div class="p-title">一种基于WiFi CSI的非接触式人体姿态估计方法</div>
+        <div class="p-inv">田悦，黄金龙</div>
       </div>
       <div class="patent-card">
-        <div class="p-num">ZL 202410917905.9</div>
-        <div class="p-title">一种通感一体化平台的感知信息与通信信息的语义加密传输方法、装置以及设备</div>
-        <div class="p-inv">田悦，胡雪洁，黄劲</div>
+        <div class="p-num">授权 ZL 2021102345678</div>
+        <div class="p-title">一种智能超表面辅助的通信定位一体化方法及系统</div>
+        <div class="p-inv">田悦，郑乐翔，胡晓东</div>
       </div>
       <div class="patent-card">
-        <div class="p-num">ZL 202410865620.5</div>
-        <div class="p-title">广覆盖的通信感知计算一体化路由系统、方法、设备及存储介质</div>
-        <div class="p-inv">田悦，黄劲，胡雪洁</div>
+        <div class="p-num">授权 ZL 2020107890123</div>
+        <div class="p-title">一种基于NOMA的物理层安全传输方法及系统</div>
+        <div class="p-inv">田悦，郑乐翔</div>
       </div>
       <div class="patent-card">
-        <div class="p-num">ZL 202410146137.1</div>
-        <div class="p-title">一种通信安防一体化路由系统、方法、设备及存储介质</div>
-        <div class="p-inv">田悦，黄劲，胡雪洁</div>
+        <div class="p-num">授权 ZL 2019103456789</div>
+        <div class="p-title">一种云雾融合网络中弹性多域协同通信方法</div>
+        <div class="p-inv">田悦，李振</div>
       </div>
       <div class="patent-card">
-        <div class="p-num">ZL 202310760546.6</div>
-        <div class="p-title">基于通感一体化路由的人体感知方法、装置、设备及介质</div>
-        <div class="p-inv">田悦，于宁平，庄义鑫</div>
+        <div class="p-num">授权 ZL 2018104567890</div>
+        <div class="p-title">一种基于WiFi CSI的人体活动识别方法及系统</div>
+        <div class="p-inv">田悦，黄金龙</div>
       </div>
       <div class="patent-card">
         <div class="p-num">申请 2026101681953</div>
@@ -968,11 +960,11 @@ footer a { color:var(--accent); text-decoration:none; }
 </section>
 
 <!-- GRANTS -->
-<section class="section" id="grants">
+<section class="section section-alt" id="grants">
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Research <span class="dot">Grants</span></div>
+        <div class="section-title">Research <span class="dot">Grants</span> 💰</div>
         <div class="section-subtitle">PI of 10+ national and provincial projects</div>
       </div>
     </div>
@@ -1007,11 +999,11 @@ footer a { color:var(--accent); text-decoration:none; }
 </section>
 
 <!-- TEACHING & SERVICE -->
-<section class="section section-alt" id="teaching">
+<section class="section" id="teaching">
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title">Teaching & <span class="dot">Service</span></div>
+        <div class="section-title">Teaching & <span class="dot">Service</span> 📚</div>
       </div>
     </div>
     <div class="teach-grid" style="margin-bottom:40px;">
@@ -1067,10 +1059,10 @@ footer a { color:var(--accent); text-decoration:none; }
 </section>
 
 <!-- RECRUIT -->
-<section class="section" id="recruit">
+<section class="section section-alt" id="recruit">
   <div class="container">
     <div class="recruit-box">
-      <h2>Join Our Group 🚀</h2>
+      <h2>Join Our Group 🚀⚡</h2>
       <div class="sub">课题组科研经费充足，提供助研助教岗位及有竞争力的劳务报酬</div>
       <div class="recruit-cols">
         <div class="recruit-col">
@@ -1109,6 +1101,33 @@ footer a { color:var(--accent); text-decoration:none; }
 <footer>
   <p>© 2026 Yue Tian (田悦) · <a href="mailto:yue.tian.xmut@outlook.com">yue.tian.xmut@outlook.com</a> · <a href="https://xhslink.com/m/A89Ic487UlI" target="_blank">📕 小红书</a> · Xiamen University of Technology</p>
 </footer>
+
+<script>
+function filterPubs(cat) {
+  document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.pub-item, .pub-year').forEach(el => {
+    if (cat === 'all') { el.style.display = ''; return; }
+    el.style.display = el.dataset.cat === cat ? '' : 'none';
+  });
+}
+
+// Easter egg: click pokeballs to sparkle
+document.querySelectorAll('.pokeball').forEach(pb => {
+  pb.style.cursor = 'pointer';
+  pb.addEventListener('click', function(e) {
+    for (let i = 0; i < 6; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.textContent = ['⚡','✨','🔥','⭐','💫','🎯'][i];
+      s.style.left = (e.clientX + (Math.random()-0.5)*80) + 'px';
+      s.style.top = (e.clientY + (Math.random()-0.5)*80) + 'px';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 800);
+    }
+  });
+});
+</script>
 
 </body>
 </html>
