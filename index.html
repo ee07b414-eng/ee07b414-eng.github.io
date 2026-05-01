@@ -157,6 +157,7 @@ nav {
 }
 .section-alt { background:var(--bg-white); }
 .container { max-width:1140px; margin:0 auto; }
+.hobby-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .section-header {
   display:flex; align-items:flex-end; justify-content:space-between;
   margin-bottom:48px; gap:16px; flex-wrap:wrap;
@@ -361,20 +362,41 @@ footer a { color:var(--accent); text-decoration:none; }
   .hero-photo { margin:0 auto; width:240px; height:280px; }
   .hero-photo .initials { font-size:100px; }
   .hero .bio { margin:0 auto 28px; }
-  .hero-btns { justify-content:center; }
+  .hero-btns { justify-content:center; flex-wrap:wrap; }
   .stat-pills { justify-content:center; }
-  .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr; }
+  .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr 1fr; }
   .recruit-cols { grid-template-columns:1fr; }
   .hero h1 { font-size:36px; }
   .hero .subtitle { font-size:18px; }
+  .hobby-grid { grid-template-columns:1fr 1fr; }
 }
 @media(max-width:600px) {
-  .nav-links { gap:0; }
-  .nav-links a { padding:6px 8px; font-size:12px; }
-  .section { padding:48px 16px; }
-  .hero { padding:110px 16px 60px; }
-  .hero h1 { font-size:30px; letter-spacing:-1px; }
-  .pub-tabs { flex-wrap:wrap; }
+  .nav-inner { padding:0 12px; }
+  .nav-links { gap:0; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .nav-links a { padding:6px 6px; font-size:11px; white-space:nowrap; }
+  .section { padding:40px 12px; }
+  .container { padding:0 8px; }
+  .hero { padding:100px 12px 48px; }
+  .hero h1 { font-size:26px; letter-spacing:-1px; }
+  .hero .subtitle { font-size:15px; }
+  .hero-badge { font-size:11px; }
+  .hero .affil { font-size:13px; }
+  .bio { font-size:13px; }
+  .hero-btns { gap:8px; }
+  .btn { padding:8px 14px; font-size:12px; }
+  .stat-pill { padding:8px 12px; }
+  .stat-pill .num { font-size:18px; }
+  .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr; }
+  .hobby-grid { grid-template-columns:1fr; }
+  .pub-card { padding:14px; }
+  .pub-title { font-size:13px; }
+  .pub-authors { font-size:12px; }
+  .section-title { font-size:22px; }
+  .recruit-cols { grid-template-columns:1fr; }
+  .pub-tabs { flex-wrap:wrap; gap:4px; }
+  .pub-tab { padding:6px 10px; font-size:11px; }
+  .grant-item { padding:14px; }
+  footer p { font-size:12px; }
 }
 </style>
 </head>
@@ -385,6 +407,7 @@ footer a { color:var(--accent); text-decoration:none; }
     <a href="#" class="nav-logo"><span>Y.</span> Tian 田悦</a>
     <div class="nav-links">
       <a href="#research">Research</a>
+      <a href="#hobby">Beyond</a>
       <a href="#publications">Papers</a>
       <a href="#patents">Patents</a>
       <a href="#grants">Grants</a>
@@ -400,7 +423,7 @@ footer a { color:var(--accent); text-decoration:none; }
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">IEEE Senior Member · Associate Professor</div>
+        <div class="hero-badge">IEEE Senior Member · Associate Professor · 🎨 误入学术圈的漫画师</div>
         <h1>Yue <span class="highlight">Tian</span><br>田悦</h1>
         <div class="subtitle">Integrated Sensing & Communication ·<br>RIS · Semantic Communication · QAOA</div>
         <div class="affil">
@@ -420,6 +443,7 @@ footer a { color:var(--accent); text-decoration:none; }
           <a href="mailto:yue.tian.xmut@outlook.com" class="btn btn-primary">📧 Contact</a>
           <a href="#publications" class="btn btn-outline">📄 Publications</a>
           <a href="#grants" class="btn btn-outline">🔬 Projects</a>
+          <a href="https://xhslink.com/m/A89Ic487UlI" target="_blank" class="btn btn-outline">📕 小红书</a>
         </div>
       </div>
       <div class="hero-photo-wrap">
@@ -530,6 +554,43 @@ footer a { color:var(--accent); text-decoration:none; }
         <div class="tl-title">Co-Founder & CTO</div>
         <div class="tl-desc">厦门拾聚科技有限公司 — ISAC安防系统 & 元宇宙外设</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND ACADEMIA -->
+<section class="section section-alt" id="hobby">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Beyond <span class="dot">Academia</span></div>
+        <div class="section-subtitle">科研之外的另一个世界</div>
+      </div>
+    </div>
+    <div class="hobby-grid">
+      <div class="r-card" style="border-left:3px solid #ff2442;">
+        <div class="icon">🎨</div>
+        <h3>漫画创作</h3>
+        <p>小红书「误入学术圈的漫画师」— 用画笔解读科研生活，将学术日常化为趣味漫画，累计获赞与收藏 2500+</p>
+      </div>
+      <div class="r-card" style="border-left:3px solid #7c3aed;">
+        <div class="icon">🎮</div>
+        <h3>游戏制作</h3>
+        <p>独立游戏制作人 — 将通感一体化技术融入交互体验，探索元宇宙外设与沉浸式玩法设计</p>
+      </div>
+      <div class="r-card" style="border-left:3px solid #059669;">
+        <div class="icon">✈️</div>
+        <h3>旅行记录</h3>
+        <p>用一种很新的方式记录旅行 — 走过英国、新西兰、马来西亚，在各地留下学术与生活的足迹</p>
+      </div>
+      <div class="r-card" style="border-left:3px solid #d97706;">
+        <div class="icon">🏢</div>
+        <h3>SageTech 创业</h3>
+        <p>厦门拾聚科技联合创始人 & CTO — ISAC安防系统与元宇宙外设，让科研走出实验室</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://xhslink.com/m/A89Ic487UlI" target="_blank" class="btn btn-outline" style="border-color:#ff2442;color:#ff2442;">📕 关注我的小红书 →</a>
     </div>
   </div>
 </section>
@@ -1046,7 +1107,7 @@ footer a { color:var(--accent); text-decoration:none; }
 </section>
 
 <footer>
-  <p>© 2026 Yue Tian (田悦) · <a href="mailto:yue.tian.xmut@outlook.com">yue.tian.xmut@outlook.com</a> · Xiamen University of Technology</p>
+  <p>© 2026 Yue Tian (田悦) · <a href="mailto:yue.tian.xmut@outlook.com">yue.tian.xmut@outlook.com</a> · <a href="https://xhslink.com/m/A89Ic487UlI" target="_blank">📕 小红书</a> · Xiamen University of Technology</p>
 </footer>
 
 </body>
