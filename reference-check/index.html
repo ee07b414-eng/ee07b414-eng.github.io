@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reference Check</title>
+    <meta
+      name="description"
+      content="A privacy-first web app for checking manuscript reference lists, DOI completeness, duplicated entries, and common citation metadata issues."
+    />
+    <meta name="application-name" content="Reference Check" />
+    <meta name="theme-color" content="#1e7a73" />
+    <meta property="og:title" content="Reference Check" />
+    <meta
+      property="og:description"
+      content="Import DOCX, BibTeX, RIS, Markdown, or text reference lists and check common citation issues in the browser."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/reference-mark.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <img src="assets/reference-mark.svg" alt="" class="brand-mark" />
+          <div>
+            <p class="eyebrow">Reference QA</p>
+            <h1>Reference Check</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-button" id="load-sample" type="button" data-testid="load-sample">
+            <span class="button-icon" aria-hidden="true">+</span>
+            示例
+          </button>
+          <button class="ghost-button" id="clear-all" type="button">
+            <span class="button-icon" aria-hidden="true">×</span>
+            清空
+          </button>
+          <button class="primary-button" id="run-check" type="button" data-testid="run-check">
+            <span class="button-icon" aria-hidden="true">✓</span>
+            开始检查
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="tool-panel input-panel" aria-label="Reference input">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Paste or Import</p>
+              <h2>参考文献列表</h2>
+            </div>
+            <label class="file-button" for="file-import">
+              <span class="button-icon" aria-hidden="true">↑</span>
+              导入 PDF/Word
+            </label>
+            <input
+              id="file-import"
+              type="file"
+              accept=".pdf,.docx,.txt,.bib,.ris,.md,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            />
+          </div>
+
+          <textarea
+            id="reference-input"
+            data-testid="reference-input"
+            spellcheck="false"
+            placeholder="把参考文献粘贴到这里，或导入 PDF / Word 文档。支持中文参考文献、编号列表、空行分隔、BibTeX。"
+          ></textarea>
+
+          <div class="controls-grid" aria-label="Check settings">
+            <label>
+              <span>目标风格</span>
+              <select id="style-select">
+                <option value="nature">Nature / high-impact journal</option>
+                <option value="apa">APA</option>
+                <option value="vancouver">Vancouver</option>
+                <option value="gbt7714">GB/T 7714 / 中文</option>
+                <option value="general">General QA</option>
+              </select>
+            </label>
+            <label>
+              <span>检查强度</span>
+              <select id="strictness-select">
+                <option value="balanced">平衡</option>
+                <option value="strict">严格</option>
+                <option value="light">轻量</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="toggle-list">
+            <label class="toggle-row">
+              <input id="check-identifiers" type="checkbox" checked />
+              <span>检查 DOI / URL / PMID / arXiv 等标识符</span>
+            </label>
+            <label class="toggle-row">
+              <input id="check-duplicates" type="checkbox" checked />
+              <span>检查重复条目与近似重复</span>
+            </label>
+            <label class="toggle-row">
+              <input id="check-completeness" type="checkbox" checked />
+              <span>检查年份、卷期、页码和访问日期</span>
+            </label>
+          </div>
+
+          <div class="input-footer">
+            <p id="input-status" aria-live="polite">等待输入参考文献。</p>
+            <button class="secondary-button" id="validate-doi" type="button">
+              在线校验 DOI
+            </button>
+          </div>
+        </section>
+
+        <section class="tool-panel results-panel" aria-label="Reference results">
+          <div class="panel-heading results-heading">
+            <div>
+              <p class="section-kicker">Quality Report</p>
+              <h2>检查结果</h2>
+            </div>
+            <div class="export-actions">
+              <button class="icon-button" id="copy-report" type="button" title="复制报告" aria-label="复制报告">
+                <span aria-hidden="true">⧉</span>
+              </button>
+              <button class="icon-button" id="export-json" type="button" title="导出 JSON" aria-label="导出 JSON">
+                <span aria-hidden="true">{ }</span>
+              </button>
+              <button class="icon-button" id="export-csv" type="button" title="导出 CSV" aria-label="导出 CSV">
+                <span aria-hidden="true">CSV</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="score-strip">
+            <div class="score-ring" id="score-ring" aria-label="Quality score">
+              <span id="score-value">0</span>
+            </div>
+            <div class="score-copy">
+              <p id="score-label">还没有检查</p>
+              <div class="metric-row">
+                <span><strong id="entry-count">0</strong> 条文献</span>
+                <span><strong id="issue-count">0</strong> 个问题</span>
+                <span><strong id="duplicate-count">0</strong> 处重复</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="issue-summary" id="issue-summary">
+            <p class="empty-state">粘贴文献后点击“开始检查”，这里会显示风险分布和逐条建议。</p>
+          </div>
+
+          <div class="reference-list-header">
+            <h3>逐条检查</h3>
+            <div class="filter-tabs" role="tablist" aria-label="Issue filters">
+              <button class="filter-tab active" type="button" data-filter="all">全部</button>
+              <button class="filter-tab" type="button" data-filter="critical">严重</button>
+              <button class="filter-tab" type="button" data-filter="warning">警告</button>
+              <button class="filter-tab" type="button" data-filter="clean">通过</button>
+            </div>
+          </div>
+          <div class="reference-list" id="reference-list" data-testid="reference-list"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>Reference Check</span>
+        <a href="privacy.html">隐私</a>
+      </footer>
+    </div>
+
+    <dialog id="detail-dialog">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="关闭">×</button>
+      </form>
+      <div id="detail-content"></div>
+    </dialog>
+
+    <script src="vendor/jszip.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+    <script src="app.js?v=pages-v1" defer></script>
+  </body>
+</html>
