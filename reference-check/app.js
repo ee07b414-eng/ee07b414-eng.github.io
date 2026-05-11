@@ -1,15 +1,20 @@
 (async () => {
   const parts = [
-    'app.bundle.1.b64',
-    'app.bundle.2.b64',
-    'app.bundle.3.b64',
-    'app.bundle.4.b64',
-    'app.bundle.5.b64',
-    'app.bundle.5.tail.b64',
-    'app.bundle.6.b64',
-    'app.bundle.7.b64',
-    'app.bundle.7.tail.b64',
-    'app.bundle.8.b64',
+    'app.v2.bundle.01.b64',
+    'app.v2.bundle.02.b64',
+    'app.v2.bundle.03.b64',
+    'app.v2.bundle.04.b64',
+    'app.v2.bundle.05.b64',
+    'app.v2.bundle.06.b64',
+    'app.v2.bundle.07.b64',
+    'app.v2.bundle.08.b64',
+    'app.v2.bundle.09.b64',
+    'app.v2.bundle.10.b64',
+    'app.v2.bundle.11.b64',
+    'app.v2.bundle.12.b64',
+    'app.v2.bundle.13.b64',
+    'app.v2.bundle.14.b64',
+    'app.v2.bundle.15.b64',
   ];
   const encoded = (await Promise.all(parts.map(async (path) => {
     const response = await fetch(path, { cache: 'no-cache' });
