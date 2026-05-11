@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>隐私 | Reference Check</title>
+    <meta name="theme-color" content="#1e7a73" />
+    <link rel="icon" href="assets/reference-mark.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="legal-shell">
+      <article class="legal-panel">
+        <p class="section-kicker">Privacy</p>
+        <h1>隐私说明</h1>
+        <p>
+          Reference Check 可以在浏览器本地处理参考文献，也可以在部署了后台服务时把你选择的文件发送到同源后台进行解析和检查。后台模式用于更稳定地处理 PDF / Word 和 DOI 校验。
+        </p>
+
+        <h2>本地处理</h2>
+        <p>
+          静态模式下，`.pdf`、`.docx`、`.txt`、`.bib`、`.ris` 和 `.md` 文件会由浏览器读取。后台模式下，文件会上传到当前网站的同源后台接口 `/api/import-check`，用于提取参考文献并返回检查结果。当前后台实现不把上传文件写入持久存储。
+        </p>
+
+        <h2>在线 DOI 校验</h2>
+        <p>
+          点击“在线校验 DOI”时，应用会向 Crossref API 请求 DOI 元数据，用来判断 DOI 是否可解析。这个动作只在你主动点击后发生。
+        </p>
+
+        <h2>浏览器存储</h2>
+        <p>
+          应用会把当前输入临时保存在本机浏览器的 localStorage 中，便于刷新后继续检查。你可以点击“清空”删除这份本地缓存。
+        </p>
+
+        <h2>联系我们</h2>
+        <p>
+          部署到正式域名后，可以在这里补充联系邮箱和运营主体信息。
+        </p>
+
+        <p><a href="index.html">返回应用</a></p>
+      </article>
+    </main>
+  </body>
+</html>
