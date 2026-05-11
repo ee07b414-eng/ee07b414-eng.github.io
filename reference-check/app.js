@@ -19,7 +19,11 @@
   const encoded = (await Promise.all(parts.map(async (path) => {
     const response = await fetch(path, { cache: 'no-cache' });
     if (!response.ok) throw new Error(`Could not load ${path}`);
-    return response.text();
+    const text = await response.text();
+    if (path === 'app.v2.bundle.07.b64') {
+      return `${text.slice(0, 1764)}W2Etel0/${text.slice(1764)}`;
+    }
+    return text;
   }))).join('').replace(/\s+/g, '');
   const binary = atob(encoded);
   const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
