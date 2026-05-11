@@ -1,0 +1,35 @@
+.badge.verified {
+  color: #1f5f39;
+  background: #daf1e2;
+}
+
+.verified-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.verified-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(47, 125, 77, 0.26);
+  border-radius: 8px;
+  background: var(--green-soft);
+  color: #1f5f39;
+  font-size: 0.82rem;
+  font-weight: 740;
+  text-decoration: none;
+}
+
+.verified-link:hover {
+  border-color: rgba(47, 125, 77, 0.48);
+  background: #dcf2e5;
+}
+
+.detail-links {
+  margin: 8px 0 14px;
+}
