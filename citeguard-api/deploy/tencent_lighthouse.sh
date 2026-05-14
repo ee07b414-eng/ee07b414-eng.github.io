@@ -61,8 +61,9 @@ curl -fsS http://127.0.0.1:8000/health
 
 sudo tee /etc/nginx/sites-available/citeguard >/dev/null <<EOF
 server {
-    listen 80;
-    server_name $DOMAIN;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name $DOMAIN _;
     client_max_body_size 30m;
 
     location / {
@@ -72,6 +73,7 @@ server {
         proxy_set_header X-Real-IP \$remote_addr;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_read_timeout 120s;
     }
 }
 EOF
@@ -80,11 +82,11 @@ sudo ln -sf /etc/nginx/sites-available/citeguard /etc/nginx/sites-enabled/citegu
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
-curl -fsS http://127.0.0.1/health
+curl -fsS -H "Host: $DOMAIN" http://127.0.0.1/health
 
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y certbot python3-certbot-nginx
 sudo certbot --nginx -d "$DOMAIN" --non-interactive --agree-tos -m "$EMAIL" --redirect || true
 
 printf '\nCITEGUARD_DEPLOY_DONE\n'
-curl -i http://127.0.0.1/health || true
+curl -i -H "Host: $DOMAIN" http://127.0.0.1/health || true
 curl -i "https://$DOMAIN/health" || true
