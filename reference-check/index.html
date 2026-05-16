@@ -19,7 +19,7 @@
     <link rel="icon" href="assets/reference-mark.svg" type="image/svg+xml" />
     <link rel="manifest" href="site.webmanifest" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="verified-links.css?v=pages-v2" />
+    <link rel="stylesheet" href="verified-links.css?v=pages-v3" />
   </head>
   <body>
     <div class="app-shell">
@@ -106,13 +106,22 @@
               <input id="check-completeness" type="checkbox" checked />
               <span>检查年份、卷期、页码和访问日期</span>
             </label>
+            <label class="toggle-row">
+              <input id="check-ai" type="checkbox" checked />
+              <span>估算 AI 写作痕迹</span>
+            </label>
           </div>
 
           <div class="input-footer">
             <p id="input-status" aria-live="polite">等待输入参考文献。</p>
-            <button class="secondary-button" id="validate-doi" type="button">
-              在线校验 DOI
-            </button>
+            <div class="input-footer-actions">
+              <button class="secondary-button" id="run-ai" type="button">
+                AI 率检测
+              </button>
+              <button class="secondary-button" id="validate-doi" type="button">
+                在线校验 DOI
+              </button>
+            </div>
           </div>
         </section>
 
@@ -153,6 +162,21 @@
             <p class="empty-state">粘贴文献后点击“开始检查”，这里会显示风险分布和逐条建议。</p>
           </div>
 
+          <div class="ai-summary" id="ai-summary" aria-live="polite" hidden>
+            <div class="ai-summary-head">
+              <div>
+                <p class="ai-kicker">AI Writing Signal</p>
+                <strong id="ai-level">未检测</strong>
+              </div>
+              <span id="ai-score">0%</span>
+            </div>
+            <div class="ai-meter" aria-hidden="true">
+              <span id="ai-meter-fill"></span>
+            </div>
+            <p id="ai-note"></p>
+            <div class="ai-signal-list" id="ai-signal-list"></div>
+          </div>
+
           <div class="reference-list-header">
             <h3>逐条检查</h3>
             <div class="filter-tabs" role="tablist" aria-label="Issue filters">
@@ -180,6 +204,6 @@
     </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
-    <script src="app.js?v=pages-v2" defer></script>
+    <script src="app.js?v=pages-v3" defer></script>
   </body>
 </html>
