@@ -7,7 +7,11 @@
   const chunks = await Promise.all(files.map(async (file) => {
     const response = await fetch(new URL(file, baseUrl), { cache: "no-store" });
     if (!response.ok) throw new Error(`Unable to load ${file}: ${response.status}`);
-    return (await response.text()).replace(/\s+/g, "");
+    const text = (await response.text()).replace(/\s+/g, "");
+    if (file === "app.v3.bundle.08.b64") {
+      return text.replace("OmZhOW9eXxhcHBlbmRpeC", "OmZhOW9lXxhcHBlbmRpeC");
+    }
+    return text;
   }));
   const binary = atob(chunks.join(""));
   const bytes = new Uint8Array(binary.length);
