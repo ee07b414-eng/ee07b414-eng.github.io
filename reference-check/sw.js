@@ -1,25 +1,10 @@
-const CACHE_NAME = "reference-check-web-v7";
+const CACHE_NAME = "reference-check-web-v8";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css",
-  "./verified-links.css?v=pages-v2",
-  "./app.js?v=pages-v2",
-  "./app.v2.bundle.01.b64",
-  "./app.v2.bundle.02.b64",
-  "./app.v2.bundle.03.b64",
-  "./app.v2.bundle.04.b64",
-  "./app.v2.bundle.05.b64",
-  "./app.v2.bundle.06.b64",
-  "./app.v2.bundle.07.b64",
-  "./app.v2.bundle.08.b64",
-  "./app.v2.bundle.09.b64",
-  "./app.v2.bundle.10.b64",
-  "./app.v2.bundle.11.b64",
-  "./app.v2.bundle.12.b64",
-  "./app.v2.bundle.13.b64",
-  "./app.v2.bundle.14.b64",
-  "./app.v2.bundle.15.b64",
+  "./verified-links.css?v=pages-v3",
+  "./app.js?v=pages-v3",
   "./privacy.html",
   "./site.webmanifest",
   "./assets/reference-mark.svg"
