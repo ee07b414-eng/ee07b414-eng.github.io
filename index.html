@@ -26,7 +26,7 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
 body {
   font-family: var(--font);
@@ -112,6 +112,7 @@ nav {
   font-weight:700; font-size:18px; color:var(--text);
   text-decoration:none; letter-spacing:-0.5px;
   display:flex; align-items:center; gap:8px;
+  white-space:nowrap; flex-shrink:0;
 }
 .nav-logo .pokeball-sm { flex-shrink:0; }
 .nav-links { display:flex; gap:4px; }
@@ -439,6 +440,64 @@ nav {
 .tl-item .tl-title { font-size:14px; font-weight:600; margin-bottom:2px; }
 .tl-item .tl-desc { font-size:13px; color:var(--text-secondary); }
 
+/* === GRADUATE OUTCOMES === */
+.outcome-summary {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px; margin-bottom:18px;
+}
+.outcome-stat {
+  background:var(--bg-white); border:2px solid var(--text);
+  border-radius:var(--radius); padding:18px 16px;
+  box-shadow:3px 3px 0 rgba(28,25,23,0.12);
+}
+.outcome-stat .num {
+  display:block; font-family:var(--pixel); font-size:22px;
+  color:var(--accent); line-height:1; margin-bottom:8px;
+}
+.outcome-stat .label {
+  display:block; font-size:12px; font-weight:700;
+  color:var(--text); margin-bottom:4px;
+}
+.outcome-stat .hint { font-size:11px; color:var(--text-muted); }
+.outcome-layout {
+  display:grid; grid-template-columns:minmax(260px,0.85fr) minmax(0,1.45fr);
+  gap:16px; align-items:start;
+}
+.outcome-note {
+  background:linear-gradient(135deg, #1a1a2e, #16213e);
+  color:#fff; border:3px solid var(--text); border-radius:var(--radius);
+  padding:24px; box-shadow:5px 5px 0 rgba(28,25,23,0.24);
+}
+.outcome-note h3 { font-size:18px; margin-bottom:10px; }
+.outcome-note p { font-size:13px; line-height:1.7; opacity:0.86; }
+.outcome-note .source {
+  margin-top:16px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.14);
+  font-size:11px; color:rgba(255,255,255,0.58);
+}
+.outcome-list { display:flex; flex-direction:column; gap:10px; }
+.outcome-row {
+  background:var(--bg-white); border:2px solid var(--border);
+  border-radius:var(--radius); padding:16px 18px;
+  display:grid; grid-template-columns:150px 1fr; gap:16px;
+  transition:all 0.2s;
+}
+.outcome-row:hover { border-color:var(--text); box-shadow:3px 3px 0 var(--text); }
+.outcome-type { display:flex; flex-direction:column; gap:6px; }
+.outcome-type span {
+  width:max-content; max-width:100%;
+  padding:3px 10px; border-radius:999px;
+  font-size:10.5px; font-weight:800; color:#fff;
+}
+.outcome-type strong {
+  font-family:var(--pixel); font-size:20px; color:var(--accent);
+}
+.outcome-type small { color:var(--text-muted); font-size:11px; }
+.outcome-details { display:flex; flex-direction:column; gap:8px; }
+.alumni {
+  display:block; font-size:13px; line-height:1.55; color:var(--text-secondary);
+}
+.alumni b { color:var(--text); font-weight:700; }
+
 /* === FOOTER === */
 footer {
   padding:40px 24px; text-align:center;
@@ -456,6 +515,8 @@ footer a:hover { text-decoration:underline; }
   .hero .bio { margin:0 auto 28px; }
   .hero-btns { justify-content:center; flex-wrap:wrap; }
   .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr 1fr; }
+  .outcome-layout { grid-template-columns:1fr; }
+  .outcome-row { grid-template-columns:132px 1fr; }
   .hobby-grid { grid-template-columns:1fr 1fr; }
   .recruit-cols { grid-template-columns:1fr; }
   .hero h1 { font-size:36px; }
@@ -463,6 +524,7 @@ footer a:hover { text-decoration:underline; }
 }
 @media(max-width:600px) {
   .nav-inner { padding:0 12px; }
+  .nav-logo { font-size:14px; gap:5px; }
   .nav-links { gap:0; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; }
   .nav-links a { padding:5px 6px; font-size:11px; white-space:nowrap; }
   .section { padding:40px 12px; }
@@ -476,6 +538,8 @@ footer a:hover { text-decoration:underline; }
   .hero-btns { gap:8px; }
   .btn { padding:8px 14px; font-size:12px; }
   .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr; }
+  .outcome-summary { grid-template-columns:1fr 1fr; }
+  .outcome-row { grid-template-columns:1fr; gap:10px; }
   .hobby-grid { grid-template-columns:1fr; }
   .pub-item { padding:14px; }
   .section-title { font-size:22px; }
@@ -507,6 +571,7 @@ footer a:hover { text-decoration:underline; }
     <a href="#" class="nav-logo"><span class="pokeball pokeball-sm"></span> <span>Y.</span> Tian 田悦</a>
     <div class="nav-links">
       <a href="#research">Research</a>
+      <a href="#outcomes">Students</a>
       <a href="#hobby">Beyond</a>
       <a href="#publications">Papers</a>
       <a href="#patents">Patents</a>
@@ -693,6 +758,110 @@ footer a:hover { text-decoration:underline; }
         <div class="tl-date">2007</div>
         <div class="tl-title">B.Sc. Telecommunication Engineering</div>
         <div class="tl-desc">Beijing University of Posts and Telecommunications (BUPT)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRADUATE OUTCOMES -->
+<section class="section" id="outcomes">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Graduate <span class="dot">Outcomes</span> 🎓</div>
+        <div class="section-subtitle">研究生培养去向 | 20级–23级，统计截至 2026-06-15</div>
+      </div>
+    </div>
+
+    <div class="outcome-summary">
+      <div class="outcome-stat">
+        <span class="num">11</span>
+        <span class="label">Graduate students</span>
+        <span class="hint">20级–23级已登记</span>
+      </div>
+      <div class="outcome-stat">
+        <span class="num">5</span>
+        <span class="label">Industry / institutes</span>
+        <span class="hint">企业、运营商、银行IT与研究院</span>
+      </div>
+      <div class="outcome-stat">
+        <span class="num">4</span>
+        <span class="label">Domestic PhD study</span>
+        <span class="hint">广东工业大学、重邮、西工大、福大</span>
+      </div>
+      <div class="outcome-stat">
+        <span class="num">1</span>
+        <span class="label">Overseas PhD study</span>
+        <span class="hint">CSC奖学金，新西兰惠灵顿维多利亚大学</span>
+      </div>
+      <div class="outcome-stat">
+        <span class="num">1</span>
+        <span class="label">Public-sector track</span>
+        <span class="hint">公职考试方向单列展示</span>
+      </div>
+    </div>
+
+    <div class="outcome-layout">
+      <div class="outcome-note">
+        <h3>Student Pathways</h3>
+        <p>
+          课题组研究生去向覆盖继续攻读博士、通信与智能制造行业就业、银行IT、科研院所与公职考试方向。
+          页面采用公开展示口径，将“就业”和“公职考试方向”分开展示。
+        </p>
+        <p class="source">Data snapshot: user-provided graduate destination records, as of 2026-06-15.</p>
+      </div>
+
+      <div class="outcome-list">
+        <div class="outcome-row">
+          <div class="outcome-type">
+            <span style="background:#5269ad;">Overseas PhD</span>
+            <strong>1</strong>
+            <small>出国/境深造</small>
+          </div>
+          <div class="outcome-details">
+            <span class="alumni"><b>肖柏云</b> · 国家留学基金委奖学金 · 新西兰惠灵顿维多利亚大学</span>
+          </div>
+        </div>
+
+        <div class="outcome-row">
+          <div class="outcome-type">
+            <span style="background:#3fa75a;">Domestic PhD</span>
+            <strong>4</strong>
+            <small>国内读博</small>
+          </div>
+          <div class="outcome-details">
+            <span class="alumni"><b>李沁莹</b> · 广东工业大学读博</span>
+            <span class="alumni"><b>胡雪洁</b> · 重庆邮电大学读博</span>
+            <span class="alumni"><b>于宁平</b> · 西北工业大学读博</span>
+            <span class="alumni"><b>庄义鑫</b> · 福州大学读博</span>
+          </div>
+        </div>
+
+        <div class="outcome-row">
+          <div class="outcome-type">
+            <span style="background:#457b9d;">Employment</span>
+            <strong>5</strong>
+            <small>企业/研究院</small>
+          </div>
+          <div class="outcome-details">
+            <span class="alumni"><b>田晨</b> · 江苏农业银行分行IT技术部</span>
+            <span class="alumni"><b>徐佳</b> · 中国电信（江苏）</span>
+            <span class="alumni"><b>冯年顺</b> · 浙江大学金华研究院</span>
+            <span class="alumni"><b>黄劲</b> · 盈趣科技</span>
+            <span class="alumni"><b>梁铭宇</b> · 宁德时代</span>
+          </div>
+        </div>
+
+        <div class="outcome-row">
+          <div class="outcome-type">
+            <span style="background:#a040a0;">Public Sector</span>
+            <strong>1</strong>
+            <small>单列展示</small>
+          </div>
+          <div class="outcome-details">
+            <span class="alumni"><b>郑晓凡</b> · 公职考试方向</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
