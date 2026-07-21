@@ -4,38 +4,146 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="あわせ箪笥 / Awase Tansu の公式サポートページ。">
+  <meta name="color-scheme" content="light">
   <title>あわせ箪笥 — サポート / Support</title>
   <style>
-    :root{--paper:#f7f2e8;--deep:#eee4d2;--ink:#242f38;--indigo:#294d63;--persimmon:#a75b3b;--gold:#ae8b4c;--line:rgba(36,47,56,.16);--white:rgba(255,255,255,.76)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(rgba(255,255,255,.32),rgba(255,255,255,.32)),repeating-linear-gradient(0deg,transparent 0 23px,rgba(41,77,99,.025) 23px 24px),var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Segoe UI",sans-serif;line-height:1.75}a{color:var(--indigo);text-underline-offset:3px}.wrap{width:min(920px,calc(100% - 32px));margin:0 auto}header{padding:64px 0 34px;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 8px;color:var(--persimmon);font-weight:700;letter-spacing:.12em;font-size:.82rem}h1,h2,h3{font-family:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;font-weight:600}h1{margin:0;color:var(--indigo);font-size:clamp(2.2rem,7vw,4.4rem);line-height:1.12;letter-spacing:.04em}header p{max-width:640px;margin:16px 0 0}nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}nav a{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--white);text-decoration:none;font-weight:650}main{padding:36px 0 70px}.lang{margin-bottom:38px;padding:clamp(22px,4vw,38px);border:1px solid var(--line);border-radius:22px;background:var(--white);box-shadow:0 14px 40px rgba(36,47,56,.05)}h2{margin:0 0 22px;color:var(--indigo);font-size:1.65rem}h3{margin:28px 0 8px;color:var(--persimmon);font-size:1.15rem}.contact{margin-top:20px;padding:18px;border-left:4px solid var(--gold);border-radius:8px;background:var(--deep)}.fine{color:#59636b;font-size:.92rem}footer{padding:28px 0 46px;border-top:1px solid var(--line);color:#59636b;font-size:.9rem}
+    :root {
+      --paper: #f7f2e8;
+      --paper-deep: #eee4d2;
+      --ink: #242f38;
+      --indigo: #294d63;
+      --persimmon: #a75b3b;
+      --willow: #6f7d58;
+      --gold: #ae8b4c;
+      --line: rgba(36, 47, 56, .16);
+      --white: rgba(255, 255, 255, .72);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(255,255,255,.32), rgba(255,255,255,.32)),
+        repeating-linear-gradient(0deg, transparent 0 23px, rgba(41,77,99,.025) 23px 24px),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--indigo); text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .wrap { width: min(920px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 64px 0 34px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 8px; color: var(--persimmon); font-weight: 700; letter-spacing: .12em; font-size: .82rem; }
+    h1, h2, h3 { font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif; font-weight: 600; }
+    h1 { margin: 0; color: var(--indigo); font-size: clamp(2.2rem, 7vw, 4.4rem); line-height: 1.12; letter-spacing: .04em; }
+    header p { max-width: 640px; margin: 16px 0 0; font-size: 1.06rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    nav a { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); text-decoration: none; font-weight: 650; }
+    main { padding: 36px 0 70px; }
+    section.lang { margin-bottom: 38px; padding: clamp(22px, 4vw, 38px); border: 1px solid var(--line); border-radius: 22px; background: var(--white); box-shadow: 0 14px 40px rgba(36,47,56,.05); }
+    h2 { margin: 0 0 22px; color: var(--indigo); font-size: 1.65rem; }
+    h3 { margin: 28px 0 8px; color: var(--persimmon); font-size: 1.15rem; }
+    ul, ol { padding-left: 1.4rem; }
+    li + li { margin-top: 8px; }
+    .contact { margin-top: 20px; padding: 18px; border-left: 4px solid var(--gold); border-radius: 8px; background: var(--paper-deep); }
+    .fine { color: #59636b; font-size: .92rem; }
+    footer { padding: 28px 0 46px; border-top: 1px solid var(--line); color: #59636b; font-size: .9rem; }
   </style>
 </head>
 <body>
-  <header><div class="wrap"><p class="eyebrow">AWASE TANSU</p><h1>あわせ箪笥</h1><p>着物、帯、小物、組み合わせ、着用とお手入れの記録を、端末の中で静かに整えるアプリです。</p><nav aria-label="Page sections"><a href="#ja">日本語</a><a href="#en" lang="en">English</a><a href="./privacy.html">プライバシー / Privacy</a></nav></div></header>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">AWASE TANSU</p>
+      <h1>あわせ箪笥</h1>
+      <p>着物、帯、小物、組み合わせ、着用とお手入れの記録を、端末の中で静かに整えるアプリです。</p>
+      <nav aria-label="Page sections">
+        <a href="#ja">日本語</a>
+        <a href="#en" lang="en">English</a>
+        <a href="./privacy.html">プライバシー / Privacy</a>
+      </nav>
+    </div>
+  </header>
+
   <main class="wrap">
     <section class="lang" id="ja" aria-labelledby="ja-title">
       <h2 id="ja-title">サポート</h2>
-      <h3>写真を追加する</h3><p>「箪笥」から追加画面を開き、写真を選んでください。写真は任意です。選択にはiOSの写真ピッカーを使い、選んだ写真だけをアプリ内に保存します。</p>
-      <h3>組み合わせを作る</h3><p>先に箪笥へ2点以上を登録し、「組み合わせ」タブから品を選んで保存します。着物、帯、小物など、手持ちの品をひとつの装いとしてまとめられます。</p>
-      <h3>着用・お手入れを記録する</h3><p>「記録」から「着ました」または「お手入れ」を選び、日付、対象、必要に応じて短いメモを保存してください。</p>
-      <h3>共有カードとデータ書き出し</h3><p>組み合わせの共有カードは端末内で作られます。JSONデータも設定から書き出せます。どちらも、iOSの共有画面で利用者が保存先や共有先を選ぶまで送信されません。</p><p class="fine">バージョン1.0ではJSONファイルをアプリへ読み戻す機能はなく、JSONに写真ファイルそのものは含まれません。</p>
-      <h3>端末変更とバックアップ</h3><p>あわせ箪笥にはアカウントや独自のクラウド同期はありません。iPhoneのバックアップと復元はAppleの設定に従います。大切な記録は、端末変更前にJSONも書き出して保管してください。</p>
-      <h3>データを削除する</h3><p>品や記録はアプリ内で個別に削除できます。設定の全データ削除、またはアプリの削除によって、端末内のアプリデータを削除できます。端末バックアップに残るコピーはAppleのバックアップ設定から管理してください。</p>
-      <div class="contact"><strong>お問い合わせ</strong><br>開発者：Yue Tian（田悦）<br>メール：<a href="mailto:ee07b414@gmail.com?subject=%E3%81%82%E3%82%8F%E3%81%9B%E7%AE%AA%E7%AC%A5%20Support">ee07b414@gmail.com</a><p class="fine">Appのバージョン、iOSのバージョン、問題が起きた操作手順をお知らせください。不要な個人情報は添付しないでください。</p></div>
-      <h3>購入と返金</h3><p>あわせ箪笥は一度購入する有料アプリです。追加課金やサブスクリプションはありません。購入処理と返金はAppleが管理します。</p>
+
+      <h3>写真を追加する</h3>
+      <p>「箪笥」から追加画面を開き、写真を選んでください。写真は任意です。選択にはiOSの写真ピッカーを使い、選んだ写真だけをアプリ内に保存します。</p>
+
+      <h3>組み合わせを作る</h3>
+      <p>先に箪笥へ2点以上を登録し、「組み合わせ」タブから品を選んで保存します。着物、帯、小物など、手持ちの品をひとつの装いとしてまとめられます。</p>
+
+      <h3>着用・お手入れを記録する</h3>
+      <p>「記録」から「着ました」または「お手入れ」を選び、日付、対象、必要に応じて短いメモを保存してください。</p>
+
+      <h3>共有カードとデータ書き出し</h3>
+      <p>組み合わせの共有カードは端末内で作られます。JSONデータも設定から書き出せます。どちらも、iOSの共有画面で利用者が保存先や共有先を選ぶまで送信されません。</p>
+      <p class="fine">バージョン1.1ではJSONファイルをアプリへ読み戻す機能はありません。また、JSONに写真ファイルそのものは含まれません。登録情報の内容確認や控えのための書き出しです。</p>
+
+      <h3>端末変更とバックアップ</h3>
+      <p>あわせ箪笥にはアカウントや独自のクラウド同期はありません。iPhoneのバックアップと復元はAppleの設定に従います。大切な記録は、端末変更前にJSONも書き出して保管してください。</p>
+
+      <h3>データを削除する</h3>
+      <p>品や記録はアプリ内で個別に削除できます。設定の全データ削除、またはアプリの削除によって、端末内のアプリデータを削除できます。端末バックアップに残るコピーは、Appleのバックアップ設定から管理してください。</p>
+
+      <div class="contact">
+        <strong>お問い合わせ</strong><br>
+        開発者：Yue Tian（田悦）<br>
+        メール：<a href="mailto:ee07b414@gmail.com?subject=%E3%81%82%E3%82%8F%E3%81%9B%E7%AE%AA%E7%AC%A5%20Support">ee07b414@gmail.com</a>
+        <p class="fine">Appのバージョン、iOSのバージョン、問題が起きた操作手順をお知らせください。着物写真、個人的なメモ、書き出したJSONなど、不要な個人情報は添付しないでください。</p>
+      </div>
+
+      <h3>無料体験、永久版、購入の復元</h3>
+      <p>すべての機能を14日間無料で試せます。無料体験は自動更新されず、終了後に自動で課金されることもありません。終了後も、保存済みデータの閲覧・書き出し・削除は利用できます。</p>
+      <p>追加・編集・共有を続ける場合は、¥980の永久版を一度だけ購入できます。サブスクリプションや追加料金はありません。以前の有料版をご購入済みの方は、追加のお支払いなく永久版を利用できます。</p>
+      <p>購入済みなのに永久版にならない場合は、アプリの「設定」→「無料体験と永久版」→「購入を復元」を選んでください。試用、購入、復元、返金はAppleが管理します。</p>
     </section>
+
     <section class="lang" id="en" lang="en" aria-labelledby="en-title">
       <h2 id="en-title">Support</h2>
-      <h3>Add a photo</h3><p>Open the add screen from Wardrobe (箪笥) and choose a photo. A photo is optional. Awase Tansu uses the iOS photo picker and saves only the image you select inside the app.</p>
-      <h3>Create an outfit</h3><p>Add at least two wardrobe items first, then choose pieces from Outfits (組み合わせ) and save them as one ensemble.</p>
-      <h3>Record wear and care</h3><p>Open Records (記録), choose Worn (着ました) or Care (お手入れ), then save the date, linked items, and an optional short note.</p>
-      <h3>Share cards and export data</h3><p>Outfit cards are generated on your device. You can also export your wardrobe data as JSON from Settings. Nothing is sent until you choose a destination in the iOS share sheet.</p><p class="fine">Version 1.0 does not import JSON files, and the JSON does not contain the photo image files.</p>
-      <h3>Moving to another device</h3><p>Awase Tansu has no account or proprietary cloud sync. iPhone backup and restore behavior follows your Apple settings. Export a JSON copy before changing devices if you want an additional record.</p>
-      <h3>Delete data</h3><p>You can delete individual items and records inside the app. Delete All Data in Settings, or remove the app, to remove its local data from the device.</p>
-      <div class="contact"><strong>Contact</strong><br>Developer: Yue Tian<br>Email: <a href="mailto:ee07b414@gmail.com?subject=Awase%20Tansu%20Support">ee07b414@gmail.com</a><p class="fine">Please include the app version, iOS version, and steps that reproduce the issue. Do not attach private content unless necessary.</p></div>
-      <h3>Purchases and refunds</h3><p>Awase Tansu is a paid app with a one-time purchase. It has no additional in-app purchases or subscriptions. Apple manages the transaction and any refund request.</p>
+
+      <h3>Add a photo</h3>
+      <p>Open the add screen from Wardrobe (箪笥) and choose a photo. A photo is optional. Awase Tansu uses the iOS photo picker and saves only the image you select inside the app.</p>
+
+      <h3>Create an outfit</h3>
+      <p>Add at least two wardrobe items first, then choose pieces from Outfits (組み合わせ) and save them as one ensemble.</p>
+
+      <h3>Record wear and care</h3>
+      <p>Open Records (記録), choose Worn (着ました) or Care (お手入れ), then save the date, linked items, and an optional short note.</p>
+
+      <h3>Share cards and export data</h3>
+      <p>Outfit cards are generated on your device. You can also export your wardrobe data as JSON from Settings. Nothing is sent until you choose a destination in the iOS share sheet.</p>
+      <p class="fine">Version 1.1 does not import JSON files, and the JSON does not contain the photo image files. It is a readable copy of your wardrobe records.</p>
+
+      <h3>Moving to another device</h3>
+      <p>Awase Tansu has no account or proprietary cloud sync. iPhone backup and restore behavior follows your Apple settings. Export a JSON copy before changing devices if you want an additional record.</p>
+
+      <h3>Delete data</h3>
+      <p>You can delete individual items and records inside the app. Delete All Data in Settings, or remove the app, to remove its local data from the device. Copies in a device backup remain controlled by your Apple backup settings.</p>
+
+      <div class="contact">
+        <strong>Contact</strong><br>
+        Developer: Yue Tian<br>
+        Email: <a href="mailto:ee07b414@gmail.com?subject=Awase%20Tansu%20Support">ee07b414@gmail.com</a>
+        <p class="fine">Please include the app version, iOS version, and steps that reproduce the issue. Do not attach kimono photos, private notes, or exported JSON unless they are necessary and you have reviewed their contents.</p>
+      </div>
+
+      <h3>Free trial, Lifetime Unlock, and restore</h3>
+      <p>You can try every feature free for 14 days. The trial does not renew and never charges automatically. After it ends, you can still view, export, and delete saved data.</p>
+      <p>To keep adding, editing, and sharing, you can purchase Lifetime Unlock once for ¥980. There is no subscription or additional fee. Customers who bought the previous paid version retain permanent access without paying again.</p>
+      <p>If a previous purchase is not reflected, open Settings → Free Trial and Lifetime → Restore Purchases. Apple manages the trial, purchase, restoration, and refund requests.</p>
     </section>
   </main>
-  <footer><div class="wrap"><a href="./privacy.html">プライバシーポリシー / Privacy Policy</a><span aria-hidden="true"> · </span><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple Standard EULA</a><p>Version 1.0 · Updated July 16, 2026 · © 2026 Yue Tian</p></div></footer>
+
+  <footer>
+    <div class="wrap">
+      <a href="./privacy.html">プライバシーポリシー / Privacy Policy</a>
+      <span aria-hidden="true"> · </span>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple Standard EULA</a>
+      <p>Version 1.1 · Updated July 21, 2026 · © 2026 Yue Tian</p>
+    </div>
+  </footer>
 </body>
 </html>
