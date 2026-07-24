@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="iOSアプリ「よりそい記録」の公式サポートページ。使い方、端末内保存、手動共有、削除方法、お問い合わせ先をご案内します。">
+  <meta name="color-scheme" content="light">
+  <title>よりそい記録 — サポート</title>
+  <style>
+    :root {
+      --rice: #f7f2e8;
+      --paper: #fffdf8;
+      --moss: #496b5b;
+      --moss-soft: #dfece2;
+      --apricot: #d88962;
+      --apricot-soft: #f6e4d7;
+      --ink: #26312c;
+      --muted: #66716b;
+      --line: rgba(38, 49, 44, .14);
+      --shadow: 0 16px 44px rgba(38, 49, 44, .07);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(216, 137, 98, .11), transparent 26rem),
+        radial-gradient(circle at 88% 18%, rgba(73, 107, 91, .11), transparent 28rem),
+        var(--rice);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+      line-height: 1.78;
+    }
+
+    a {
+      color: var(--moss);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--apricot);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .wrap {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 10;
+      padding: 10px 14px;
+      color: var(--paper);
+      background: var(--moss);
+      border-radius: 10px;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    header {
+      padding: 68px 0 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--apricot);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    h1, h2, h3 {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--moss);
+      font-size: clamp(2.25rem, 8vw, 4.5rem);
+      line-height: 1.12;
+      letter-spacing: .035em;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 18px 0 0;
+      font-size: 1.06rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    nav a {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .78);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    main { padding: 38px 0 74px; }
+
+    article {
+      padding: clamp(22px, 5vw, 42px);
+      background: rgba(255, 253, 248, .88);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 24px;
+      color: var(--moss);
+      font-size: 1.7rem;
+    }
+
+    h3 {
+      margin: 32px 0 9px;
+      color: #a65f42;
+      font-size: 1.18rem;
+    }
+
+    ul, ol { padding-left: 1.45rem; }
+    li + li { margin-top: 7px; }
+
+    .summary,
+    .notice,
+    .contact {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .summary {
+      border-left: 5px solid var(--moss);
+      background: var(--moss-soft);
+    }
+
+    .notice {
+      border-left: 5px solid var(--apricot);
+      background: var(--apricot-soft);
+    }
+
+    .contact {
+      border: 1px solid var(--line);
+      background: var(--rice);
+    }
+
+    .fine {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    footer {
+      padding: 28px 0 46px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 520px) {
+      header { padding-top: 52px; }
+      article { border-radius: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">YORISOI KIROKU</p>
+      <h1>よりそい記録</h1>
+      <p class="lead">介護の現場で交わされる日々の事実を、短く記録し、次の担当者への引き継ぎと共有前の確認に役立てるiPhoneアプリです。</p>
+      <nav aria-label="ページ内と関連ページ">
+        <a href="#usage">使い方</a>
+        <a href="#sharing">共有</a>
+        <a href="#deletion">削除</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="./privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <article aria-labelledby="support-title">
+      <h2 id="support-title">サポート</h2>
+
+      <div class="summary">
+        <strong>バージョン1.0の要点：</strong>
+        記録はこの端末内に保存されます。アカウント、開発者運営のサーバー、独自のクラウド同期、広告、解析、追跡はありません。外部への共有は、利用者がiOSの共有画面で共有先を選んだ場合にだけ行われます。
+      </div>
+
+      <h3 id="usage">記録を始める</h3>
+      <ol>
+        <li>「今日」タブ右上の追加ボタンから、記録対象となる方を追加します。</li>
+        <li>対象のカードにある「記録する」を選びます。</li>
+        <li>食事、睡眠、活動、気づき、家族連絡、引き継ぎから種類を選び、事実を短く入力して保存します。</li>
+        <li>次の担当者に確認してほしい内容は「次の担当へ要確認として渡す」をオンにします。</li>
+      </ol>
+      <p>初回起動時には、操作を確認できる架空のサンプルデータが入っています。「設定」の「すべての記録を削除」で空の状態から始められます。「サンプルデータを復元」を実行すると、現在の記録は架空のサンプルデータに置き換わります。</p>
+
+      <h3>引き継ぎを確認する</h3>
+      <p>「引き継ぎ」タブで、次の勤務へ渡す内容を確認できます。項目をタップするかスワイプすると、確認済み・未確認の状態を切り替えられます。不要な引き継ぎ項目はスワイプ操作で削除できます。</p>
+
+      <h3 id="sharing">共有用の要約を手動で共有する</h3>
+      <p>記録時に「共有用の要約に含める」をオンにした記録だけが、「共有」タブのプレビューと共有用要約に含まれます。内容を確認して「要約を共有する」を押すと、iOSの共有画面が開きます。</p>
+      <ul>
+        <li>本アプリが共有内容を自動送信することはありません。</li>
+        <li>利用者がメッセージ、メールなどの共有先と送信操作を選んだ場合に限り、その共有先へ要約テキストが渡されます。</li>
+        <li>選択した共有先での情報の取扱いには、そのサービスの規約とプライバシーポリシーが適用されます。</li>
+        <li>家族用アカウント、別端末への自動配信、チャット、バックグラウンド通知はありません。</li>
+      </ul>
+
+      <h3>保存場所と端末変更</h3>
+      <p>記録対象、日々の記録、引き継ぎ、共有対象の設定は、iPhone上の本アプリ専用領域に保存されます。開発者は内容へアクセスできません。本アプリ独自のアカウントやクラウド同期はないため、別の端末へ自動では移りません。</p>
+      <p class="fine">iPhoneまたはiCloudのバックアップを利用している場合、iOSが本アプリのデータをバックアップへ含めることがあります。バックアップと復元はAppleの機能および利用者の設定によって管理されます。</p>
+
+      <h3 id="deletion">記録を削除する</h3>
+      <ul>
+        <li>個別の記録：対象者の詳細画面から削除できます。</li>
+        <li>記録対象と関連データ：対象者の詳細画面右上のメニューから、その方と日々の記録・引き継ぎをまとめて削除できます。</li>
+        <li>引き継ぎ：引き継ぎ項目をスワイプして削除できます。</li>
+        <li>すべての記録：「設定」→「すべての記録を削除」で、記録対象、日々の記録、引き継ぎを端末から削除できます。</li>
+        <li>本アプリの全ローカルデータ：iPhoneから本アプリを削除すると、担当者名を含む本アプリの端末内データが削除されます。</li>
+      </ul>
+      <p>削除したデータは本アプリから復元できません。端末バックアップ内に残るコピーは、Appleのバックアップ設定から管理してください。</p>
+
+      <div class="notice">
+        <strong>医療・緊急用途について</strong>
+        <p>本アプリは、日々の事実記録と引き継ぎを補助するツールです。診断、治療方針の提案、投薬量の計算、服薬判断、健康状態の自動判定、緊急通報を提供しません。体調の急変や緊急時には、施設の手順に従い、医療機関、救急機関など適切な窓口へ連絡してください。</p>
+      </div>
+
+      <h3 id="contact">お問い合わせ</h3>
+      <div class="contact">
+        開発者：Yue Tian（田悦）<br>
+        メール：<a href="mailto:ee07b414@gmail.com?subject=%E3%82%88%E3%82%8A%E3%81%9D%E3%81%84%E8%A8%98%E9%8C%B2%20Support">ee07b414@gmail.com</a>
+        <p class="fine">お問い合わせの際は、Appのバージョン、iOSのバージョン、問題が起きた操作手順をお知らせください。入居者名、連絡先、生活・健康に関する記録、共有用要約などの個人情報は、メールに記載または添付しないでください。</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span aria-hidden="true"> · </span>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple標準使用許諾契約</a>
+      <p>Version 1.0 · Updated July 24, 2026 · © 2026 Yue Tian</p>
+    </div>
+  </footer>
+</body>
+</html>

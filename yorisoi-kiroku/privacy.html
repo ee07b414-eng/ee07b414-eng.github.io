@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="iOSアプリ「よりそい記録」のプライバシーポリシー。端末内保存、手動のシステム共有、削除方法について説明します。">
+  <meta name="color-scheme" content="light">
+  <title>よりそい記録 — プライバシーポリシー</title>
+  <style>
+    :root {
+      --rice: #f7f2e8;
+      --paper: #fffdf8;
+      --moss: #496b5b;
+      --moss-soft: #dfece2;
+      --apricot: #d88962;
+      --apricot-soft: #f6e4d7;
+      --ink: #26312c;
+      --muted: #66716b;
+      --line: rgba(38, 49, 44, .14);
+      --shadow: 0 16px 44px rgba(38, 49, 44, .07);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(216, 137, 98, .11), transparent 26rem),
+        radial-gradient(circle at 88% 18%, rgba(73, 107, 91, .11), transparent 28rem),
+        var(--rice);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+      line-height: 1.78;
+    }
+
+    a {
+      color: var(--moss);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--apricot);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .wrap {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 10;
+      padding: 10px 14px;
+      color: var(--paper);
+      background: var(--moss);
+      border-radius: 10px;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    header {
+      padding: 68px 0 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--apricot);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    h1, h2, h3 {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--moss);
+      font-size: clamp(2rem, 7vw, 4rem);
+      line-height: 1.16;
+      letter-spacing: .03em;
+    }
+
+    .effective {
+      margin: 17px 0 0;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    nav a {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .78);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    main { padding: 38px 0 74px; }
+
+    article {
+      padding: clamp(22px, 5vw, 42px);
+      background: rgba(255, 253, 248, .88);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      color: var(--moss);
+      font-size: 1.7rem;
+    }
+
+    h3 {
+      margin: 32px 0 9px;
+      color: #a65f42;
+      font-size: 1.18rem;
+    }
+
+    ul { padding-left: 1.45rem; }
+    li + li { margin-top: 7px; }
+
+    .summary,
+    .notice {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .summary {
+      border-left: 5px solid var(--moss);
+      background: var(--moss-soft);
+    }
+
+    .notice {
+      border-left: 5px solid var(--apricot);
+      background: var(--apricot-soft);
+    }
+
+    .fine {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    footer {
+      padding: 28px 0 46px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 520px) {
+      header { padding-top: 52px; }
+      article { border-radius: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">YORISOI KIROKU</p>
+      <h1>プライバシーポリシー</h1>
+      <p class="effective">施行日：2026年7月24日</p>
+      <nav aria-label="関連ページ">
+        <a href="./support.html">サポート</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <article aria-labelledby="policy-title">
+      <h2 id="policy-title">よりそい記録 プライバシーポリシー</h2>
+
+      <div class="summary">
+        <strong>要点：</strong>
+        「よりそい記録」はアカウントを必要とせず、広告、追跡、開発者による解析、開発者サーバーへのデータ送信を行いません。入力内容は端末内に保存されます。外部への共有は、利用者がiOSの共有画面で共有先を選んだ場合にだけ行われます。
+      </div>
+
+      <h3>1. 適用範囲</h3>
+      <p>本ポリシーは、Yue Tian（田悦）が提供するiOSアプリ「よりそい記録」（以下「本アプリ」）に適用されます。</p>
+
+      <h3>2. 開発者によるデータ収集</h3>
+      <p>開発者は、本アプリから個人データ、健康に関する情報、利用状況、端末識別子、広告識別子、位置情報、連絡先、写真、購入情報を収集しません。本アプリには、広告SDK、第三者解析SDK、追跡技術、アカウント機能、開発者が運営するサーバーとの通信がありません。</p>
+
+      <h3>3. 端末内に保存する内容</h3>
+      <p>利用者が入力または選択した次の内容は、iPhone上の本アプリ専用領域に保存されます。</p>
+      <ul>
+        <li>記録対象となる方の氏名、よみがな、年齢、ユニット、居室、家族連絡先</li>
+        <li>担当者の表示名</li>
+        <li>食事、睡眠、活動、気づき、家族連絡、引き継ぎに関する記録</li>
+        <li>要確認の状態、引き継ぎの確認状態</li>
+        <li>共有用要約に含めるかどうかの選択</li>
+      </ul>
+      <p>開発者は、これらの端末内データへアクセスできません。</p>
+
+      <h3>4. 利用目的</h3>
+      <p>端末内データは、本アプリ上で日々の事実を整理し、次の担当者への引き継ぎを確認し、共有対象として選んだ記録から共有前の要約を作るためにのみ使用されます。本アプリは入力内容を医学的に解析、採点または自動判定しません。</p>
+
+      <h3>5. iOSのシステム共有</h3>
+      <p>共有用要約は端末内で生成されます。利用者が「要約を共有する」を選び、iOSの共有画面でメッセージ、メールなどの共有先と送信操作を選んだ場合に限り、要約テキストがその共有先へ渡されます。</p>
+      <ul>
+        <li>本アプリが要約を自動送信することはありません。</li>
+        <li>開発者に共有内容のコピーは送られません。ただし、利用者自身が開発者宛てのメールなどを共有先として選んだ場合を除きます。</li>
+        <li>選択した共有先による情報の取扱いには、そのサービスの利用規約とプライバシーポリシーが適用されます。</li>
+      </ul>
+      <div class="notice">
+        共有用要約には、氏名や生活に関する記録が含まれる場合があります。共有前に内容と宛先を確認し、閲覧を認められた相手だけを選んでください。
+      </div>
+
+      <h3>6. アカウント、クラウド同期、通知</h3>
+      <p>本アプリには、利用者アカウント、家族用アカウント、開発者独自のクラウド同期、別端末への自動配信、チャット、バックグラウンド通知がありません。</p>
+
+      <h3>7. 端末バックアップ</h3>
+      <p>本アプリは独自のクラウド同期を提供しません。ただし、利用者がiPhoneまたはiCloudのバックアップを有効にしている場合、iOSが本アプリの端末内データをバックアップへ含めることがあります。その処理はAppleと利用者のバックアップ設定によって管理されます。</p>
+
+      <h3>8. 保存期間と削除</h3>
+      <p>データは、利用者が削除するまで端末内に保存されます。</p>
+      <ul>
+        <li>個別の記録は、記録対象の詳細画面から削除できます。</li>
+        <li>記録対象を削除すると、その方に関連する日々の記録と引き継ぎも削除されます。</li>
+        <li>引き継ぎ項目は、引き継ぎ画面から個別に削除できます。</li>
+        <li>「設定」→「すべての記録を削除」で、記録対象、日々の記録、引き継ぎをまとめて削除できます。この操作では担当者の表示名は削除されません。</li>
+        <li>本アプリをiPhoneから削除すると、担当者の表示名を含む本アプリの端末内データが削除されます。</li>
+      </ul>
+      <p>削除したデータを開発者が復元することはできません。端末バックアップ内に残るコピーは、Appleのバックアップ設定から利用者が管理します。</p>
+
+      <h3>9. セキュリティ</h3>
+      <p>端末にアクセスできる方は、本アプリ内の記録を閲覧できる場合があります。iPhoneのパスコード、Face IDなどを適切に設定し、共有端末での取扱いと共有先の選択に注意してください。</p>
+
+      <h3>10. 医療・緊急用途ではないこと</h3>
+      <p>本アプリは、日々の事実記録と引き継ぎを補助するツールです。診断、治療方針の提案、投薬量の計算、服薬判断、健康状態の自動判定、緊急通報を提供しません。</p>
+
+      <h3>11. 子どものプライバシー</h3>
+      <p>本アプリは子ども向けとして設計されたものではありません。また、年齢を問わず、開発者が本アプリから利用者の個人データを収集することはありません。</p>
+
+      <h3>12. サポートサイト</h3>
+      <p>本サポートサイトには、広告、追跡スクリプト、開発者によるアクセス解析を設置していません。ホスティング事業者であるGitHubが、セキュリティやサービス運用のために標準的なアクセスログを処理する場合があります。その取扱いにはGitHubのプライバシーポリシーが適用されます。</p>
+
+      <h3>13. 本ポリシーの変更</h3>
+      <p>本アプリの機能または情報の取扱いを変更する場合、本ページを更新し、必要に応じてApp Store上のプライバシー情報も更新します。</p>
+
+      <h3 id="contact">14. お問い合わせ</h3>
+      <p>
+        開発者：Yue Tian（田悦）<br>
+        メール：<a href="mailto:ee07b414@gmail.com?subject=%E3%82%88%E3%82%8A%E3%81%9D%E3%81%84%E8%A8%98%E9%8C%B2%20Privacy">ee07b414@gmail.com</a>
+      </p>
+      <p class="fine">お問い合わせの際は、入居者名、連絡先、生活・健康に関する記録、共有用要約などの個人情報をメールに記載または添付しないでください。</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a href="./support.html">サポート</a>
+      <p>Effective July 24, 2026 · © 2026 Yue Tian</p>
+    </div>
+  </footer>
+</body>
+</html>
