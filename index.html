@@ -279,6 +279,39 @@ nav {
 .r-card h3 { font-size:16px; font-weight:700; margin-bottom:8px; letter-spacing:-0.3px; }
 .r-card p { font-size:13.5px; line-height:1.6; color:var(--text-secondary); }
 
+/* === APPS === */
+.app-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px;
+}
+.app-card {
+  display:flex; flex-direction:column; gap:16px; min-width:0;
+  padding:22px; border:2px solid var(--text); border-radius:8px;
+  background:var(--bg-white); transition:border-color 0.2s, box-shadow 0.2s;
+}
+.app-card:hover { border-color:var(--accent2); box-shadow:var(--card-shadow); }
+.app-card-header { display:flex; align-items:flex-start; gap:14px; min-height:64px; }
+.app-icon {
+  width:64px; height:64px; flex-shrink:0; object-fit:cover;
+  border:1px solid var(--border); border-radius:12px;
+}
+.app-identity { min-width:0; }
+.app-card h3 { font-size:18px; line-height:1.45; letter-spacing:0; overflow-wrap:anywhere; }
+.app-meta { font-size:12px; color:var(--text-secondary); margin-top:5px; }
+.app-card p { font-size:13.5px; line-height:1.7; color:var(--text-secondary); }
+.app-store-link {
+  display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+  min-height:36px; margin-top:auto; padding:6px 12px;
+  border:2px solid var(--text); border-radius:6px;
+  color:var(--text); font-size:12px; font-weight:600; text-decoration:none;
+  transition:background 0.2s, color 0.2s;
+}
+.app-store-link:hover { background:var(--text); color:var(--bg-white); }
+.app-store-link:focus-visible, .app-developer-link:focus-visible {
+  outline:3px solid var(--accent2); outline-offset:4px;
+}
+.app-developer-link { font-size:13px; font-weight:600; color:var(--accent2); text-decoration:none; }
+.app-developer-link:hover { text-decoration:underline; }
+
 /* === PUBLICATIONS === */
 .pub-tabs { display:flex; gap:4px; margin-bottom:24px; flex-wrap:wrap; }
 .pub-tab {
@@ -518,6 +551,7 @@ footer a:hover { text-decoration:underline; }
   .hero .bio { margin:0 auto 28px; }
   .hero-btns { justify-content:center; flex-wrap:wrap; }
   .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr 1fr; }
+  .app-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .outcome-layout { grid-template-columns:1fr; }
   .outcome-row { grid-template-columns:132px 1fr; }
   .hobby-grid { grid-template-columns:1fr 1fr; }
@@ -541,6 +575,7 @@ footer a:hover { text-decoration:underline; }
   .hero-btns { gap:8px; }
   .btn { padding:8px 14px; font-size:12px; }
   .research-grid, .teach-grid, .service-grid, .patent-grid { grid-template-columns:1fr; }
+  .app-grid { grid-template-columns:1fr; }
   .outcome-summary { grid-template-columns:1fr 1fr; }
   .outcome-row { grid-template-columns:1fr; gap:10px; }
   .hobby-grid { grid-template-columns:1fr; }
@@ -902,35 +937,88 @@ footer a:hover { text-decoration:underline; }
 </section>
 
 <!-- APP -->
-<section class="section section-alt" id="app">
+<section class="section section-alt" id="app" data-storefront="cn">
   <div class="container">
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="dot">Apps</span> 📱 <span class="pokeball pokeball-sm"></span></div>
-        <div class="section-subtitle">独立开发 · 两款 iOS App 已上架 App Store</div>
+        <h2 class="section-title"><span class="dot">Apps</span> <span class="pokeball pokeball-sm" aria-hidden="true"></span></h2>
+        <div class="section-subtitle">独立开发 · 9 款 iOS App 已上架中国区 App Store</div>
       </div>
+      <a href="https://apps.apple.com/cn/developer/id1896610971" target="_blank" rel="noopener noreferrer" class="app-developer-link">App Store 开发者主页 &#8599;</a>
     </div>
-    <div class="hobby-grid">
-      <!-- 暖居 -->
-      <div class="r-card" style="border-left:4px solid #f97316;">
-        <div class="type-badge type-fire">🏠 Utility</div>
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/20/5a/ac205a38-dad6-bd9f-8a6e-fe3ff6d33d52/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg"
-             alt="暖居" style="width:56px; height:56px; border-radius:14px; border:2px solid var(--text); margin:12px 0 8px;"
-             onerror="this.style.display='none'">
-        <h3>暖居 <small style="font-weight:500;color:var(--text-muted);">v2.6 · ⭐ 5.0</small></h3>
-        <p>家庭与小团队勤务协作。任务同步、收据OCR、GPS签到、宠物日记、儿童任务、用药提醒等。无广告追踪，云端同步。</p>
-        <a href="https://apps.apple.com/cn/app/%E6%9A%96%E5%B1%85/id6769663879" target="_blank" class="btn btn-outline" style="margin-top:12px;font-size:12px;padding:6px 14px;">📲 下载</a>
-      </div>
-      <!-- 师/生通课题组 -->
-      <div class="r-card" style="border-left:4px solid #3b82f6;">
-        <div class="type-badge type-water">🎓 Education</div>
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/34/6e/d7346e7c-bd1f-b552-7ff7-707f838f368f/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg"
-             alt="师/生通课题组" style="width:56px; height:56px; border-radius:14px; border:2px solid var(--text); margin:12px 0 8px;"
-             onerror="this.style.display='none'">
-        <h3>师/生通课题组 <small style="font-weight:500;color:var(--text-muted);">v1.3 · 2026</small></h3>
-        <p>课题组轻量协作工具。导师管多学生、发布科研任务、查看进展反馈；学生提交进度、报告阻塞点；论文/专利/项目投稿全流程状态追踪（草稿→审稿→发表）。</p>
-        <a href="https://apps.apple.com/cn/app/%E5%B8%88%E7%94%9F%E9%80%9A%E8%AF%BE%E9%A2%98%E7%BB%84/id6770288053" target="_blank" class="btn btn-outline" style="margin-top:12px;font-size:12px;padding:6px 14px;">📲 下载</a>
-      </div>
+    <div class="app-grid">
+      <article class="app-card" data-app-id="6770288053">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6770288053.jpg" alt="研记图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>研记</h3><div class="app-meta">效率 · v1.6</div></div>
+        </div>
+        <p>面向导师与研究生的课题组协作工具，集中管理科研任务、学生进展、成果投稿状态和组内事务，支持跨设备同步。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6770288053" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看研记">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6768893194">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6768893194.jpg" alt="CiteGuard 图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>CiteGuard</h3><div class="app-meta">教育 · v1.9</div></div>
+        </div>
+        <p>科研参考文献核验工具，支持 Word/PDF 文稿、题录与 DOI 检查、撤稿信息核对，以及 IEEE、APA、GB/T 7714 引用格式和审核报告导出。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6768893194" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看 CiteGuard">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6790275072">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6790275072.jpg" alt="归页·扫描宝图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>归页·扫描宝</h3><div class="app-meta">效率 · v1.2.2</div></div>
+        </div>
+        <p>本地文档扫描与资料整理，支持裁边、透视校正、多页 PDF、图片和 OCR 文本导出；无需注册，当前功能免费。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6790275072" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看归页·扫描宝">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6769663879">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6769663879.jpg" alt="暖居图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>暖居</h3><div class="app-meta">生活 · v3.1</div></div>
+        </div>
+        <p>家庭与小团队的勤务协作，支持任务指派、收据 OCR、请假采购申请、GPS 签到、工作日历与日常沟通，数据跨设备同步。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6769663879" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看暖居">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6789861870">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6789861870.jpg" alt="缓体图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>缓体</h3><div class="app-meta">健康健美 · v1.5.3</div></div>
+        </div>
+        <p>基于 Apple 健康整理睡眠、活动、身体压力等日常记录，提供个人挑战、趋势回顾、本地日记和时光相机。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6789861870" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看缓体">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6770262307">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6770262307.jpg" alt="安心药箱图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>安心药箱</h3><div class="app-meta">医疗 · v1.4</div></div>
+        </div>
+        <p>家庭药品管理，支持药盒拍照识别、有效期核对、到期提醒、服药计划和库存整理，可按家庭成员与存放位置归档。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6770262307" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看安心药箱">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6770190089">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6770190089.jpg" alt="宠物心灵图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>宠物心灵</h3><div class="app-meta">生活 · v2.0</div></div>
+        </div>
+        <p>本地宠物日记，记录精神、食欲、饮水与日常行为，整理宠物档案，并为疫苗、驱虫、用药和洗护安排照料提醒。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6770190089" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看宠物心灵">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6790179126">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6790179126.jpg" alt="装柜留证图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3>装柜留证</h3><div class="app-meta">商务 · v1.1</div></div>
+        </div>
+        <p>面向外贸与仓储现场的装柜记录，整理装载节点、异常、封条和签名，导出中英双语 PDF 报告与原始照片证据包。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6790179126" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看装柜留证">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
+      <article class="app-card" data-app-id="6792327495">
+        <div class="app-card-header">
+          <img class="app-icon" src="assets/apps/6792327495.jpg" alt="肌ごよみ图标" width="64" height="64" loading="lazy" decoding="async">
+          <div class="app-identity"><h3 lang="ja">肌ごよみ - スキンケア記録</h3><div class="app-meta">生活 · v1.1.0</div></div>
+        </div>
+        <p>护肤日历与状态记录，保存早晚护理、背景备注和照片，手动对比两张照片，并回顾 28 天的日常变化。</p>
+        <a class="app-store-link" href="https://apps.apple.com/cn/app/id6792327495" target="_blank" rel="noopener noreferrer" aria-label="在中国区 App Store 查看肌ごよみ">App Store 下载 <span aria-hidden="true">&#8599;</span></a>
+      </article>
     </div>
   </div>
 </section>
